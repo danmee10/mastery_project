@@ -3,4 +3,4 @@ Rails 3.2.13
 
 Aiming for a more structured approach to PoemEngine
 
-...Son...of...POEM ENGINE!!!!!
+...Son...of...POEMENGINE!!!!!
