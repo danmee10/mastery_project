@@ -5,7 +5,7 @@ describe "A user on the home page" do
     visit '/'
     expect(page).to have_content "PoemEngine"
     expect(page).to have_content "Enter Text!"
-    expect(page).to have_field "text"
+    expect(page).to have_field "poem_original_text"
   end
 
   context "that isn't logged in" do
