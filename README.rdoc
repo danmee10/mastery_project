@@ -1,0 +1,6 @@
+Ruby 1.9.3
+Rails 3.2.13
+
+Aiming for a more structured approach to PoemEngine
+
+...Son...of...POEM ENGINE!!!!!

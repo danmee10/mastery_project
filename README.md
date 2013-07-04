@@ -1,2 +1,0 @@
-mastery_project
-===============
