@@ -12,17 +12,20 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
   gem 'therubyracer'
-  # gem 'less-rails'
+  gem 'less-rails'
   gem 'jquery-rails'
 end
 
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
-  # gem 'better_errors'
+  gem 'capybara'
+end
+
+group :development do
+  gem "better_errors"
   gem 'binding_of_caller'
   gem 'pry'
-  gem 'capybara'
 end
 
 group :production do
