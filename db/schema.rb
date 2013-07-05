@@ -11,13 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130704225127) do
+ActiveRecord::Schema.define(:version => 20130705214322) do
 
   create_table "poems", :force => true do |t|
     t.text     "original_text"
     t.text     "poem_text"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.integer  "max_syllables", :default => 8
+    t.integer  "max_lines",     :default => 4
+  end
+
+  create_table "words", :force => true do |t|
+    t.string   "spelling"
+    t.integer  "syllable_count"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
 end

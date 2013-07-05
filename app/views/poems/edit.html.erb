@@ -3,5 +3,13 @@
 </div>
 
 <div class="span5 offset1">
-  <%= @poem.poem_text %>
+  <% @poem.default_verse_form.each do |stanza| %>
+    <% if stanza.kind_of?(Array) %>
+      <% stanza.each do |line| %>
+        <%= line %>
+      <% end %>
+    <% else %>
+      <%= stanza %>
+    <% end %>
+  <% end %>
 </div>

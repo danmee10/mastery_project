@@ -7,6 +7,7 @@ class PoemsController < ApplicationController
   def create
     @poem = Poem.new(params[:poem])
     @poem.poem_text ||= @poem.original_text
+
     if @poem.save
       redirect_to edit_poem_path(@poem)
     else
@@ -17,5 +18,9 @@ class PoemsController < ApplicationController
 
   def edit
     @poem = Poem.find(params[:id])
+
+  end
+
+  def update
   end
 end
