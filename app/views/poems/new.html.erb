@@ -1,14 +1,15 @@
 <div class="row">
-  <div class="text-center">
+  <div class="form text-center">
     <h1>Enter Text!</h1>
     <%= simple_form_for @poem do |f| %>
       <%= f.text_area :original_text %>
+      <%= f.button :submit, "Begin!", class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
 
 <div class="row">
   <div class="text-center">
-      <%= f.button :submit, "Begin!", class: "btn btn-primary" %>
-    <% end %>
+    THE BUTTON SHOULD BE HERE
   </div>
 </div>

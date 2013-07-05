@@ -13,6 +13,8 @@ describe "A user on the home page" do
       visit '/'
       fill_in :poem_original_text, with: "There are no words in here."
       expect(page).to have_button "Begin!"
+      click_on "Begin!"
+      expect(Poem.all.count).to eq 1
     end
 
     it "can login"
