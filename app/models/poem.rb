@@ -1,35 +1,43 @@
 class Poem < ActiveRecord::Base
-  attr_accessible :original_text, :poem_text
+  attr_accessible :original_text, :poem_text, :max_lines, :max_syllables
 
   validates :original_text, presence: true
 
   def default_verse_form
-    stanzas_array = []
-    stanza = []
-    line_array = []
+    dirty_words_array = poem_text.split(" ")
+    lines_array(dirty_words_array).each_slice(max_lines).to_a
+  end
+
+private
+  def lines_array(dirty_words_array)
+    current_line = []
+    all_lines = []
     line_syllables = 0
 
-    poem_text.split(" ").each do |word|
+    dirty_words_array.each do |word|
       clean_word = Word.clean(word)
       word_sylls = Word.syllables(clean_word)
 
-      if (line_syllables + word_sylls) < max_syllables
+      if (line_syllables + word_sylls) <= max_syllables
         line_syllables += word_sylls
-        line_array << word
-      else
-        if stanza.count < max_lines
-          stanza << line_array.join(" ")
-        else
-          stanzas_array << stanza
-          stanza = [line_array.join(" ")]
+        current_line << word
+
+        if word == dirty_words_array.last
+          all_lines << current_line
         end
-        line_array = [word]
+
+      else
+        all_lines << current_line.join(" ")
+        current_line = [word]
         line_syllables = word_sylls
+
+        if word == dirty_words_array.last
+          all_lines += current_line
+        end
+
       end
     end
 
-    return stanzas_array
+    return all_lines
   end
-
-
 end
