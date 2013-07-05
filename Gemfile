@@ -20,6 +20,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :development do

@@ -9,11 +9,10 @@ describe "A user on the home page" do
   end
 
   context "that isn't logged in" do
-    xit "can enter text" do
+    it "can enter text" do
       visit '/'
-      fill_in :text, with: "The trash can is with garbage"
-      click_on :submit
-      expect
+      fill_in :poem_original_text, with: "There are no words in here."
+      expect(page).to have_button "Begin!"
     end
 
     it "can login"
