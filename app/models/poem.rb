@@ -23,7 +23,7 @@ private
         current_line << word
 
         if word == dirty_words_array.last
-          all_lines << current_line
+          all_lines << current_line.join(" ")
         end
 
       else
@@ -32,7 +32,7 @@ private
         line_syllables = word_sylls
 
         if word == dirty_words_array.last
-          all_lines += current_line
+          all_lines << current_line.join(" ")
         end
 
       end

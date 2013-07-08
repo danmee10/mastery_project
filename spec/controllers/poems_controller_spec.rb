@@ -18,12 +18,5 @@ describe PoemsController do
       get :edit, params
       expect(poem.original_text).to eq "Words for editing."
     end
-
-    it 'defines poem_text as the original text split into default lines and stanzas' do
-      poem = Poem.create(original_text: "Words for editing are fun to edit because they are not rhyming yet.")
-      params = {id: 1}
-      get :edit, params
-      expect(poem.poem_text).to eq "Words for editing."
-    end
   end
 end
