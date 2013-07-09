@@ -1,4 +1,4 @@
-<div class="span5 offset1">
+<div class="span5 offset1" id="original-text">
   <%= @poem.original_text %>
   <br/>
   <br/>
@@ -11,17 +11,39 @@
 
 <div class="span5 offset1">
   <% @poem.default_verse_form.each do |stanza| %>
+  <table>
     <% if stanza.kind_of?(Array) %>
-      <% stanza.each do |line| %>
-        <%= line %>
-        <%= Word.syllables(line) %>
-        <br/>
+      <% stanza.each_with_index do |line, index| %>
+       <tr>
+          <td>
+            <% line.split.each do |word|%>
+              <span class="word"><%= Word.text(word) %></span><%= Word.punctuation(word) %>
+            <% end %>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><%= Word.syllables(line) %></td>
+       </tr>
       <% end %>
     <% else %>
-      <%= stanza %>
-        <br/>
+        <tr>
+          <td>
+            <% stanza.split.each do |word|%>
+              <span class="word"><%= Word.text(word) %></span><%= Word.punctuation(word) %>
+            <% end %>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><%= Word.syllables(stanza) %></td>
+        </tr>
     <% end %>
     <hr/>
   <% end %>
+  </table>
+  <hr/>
 </div>
 

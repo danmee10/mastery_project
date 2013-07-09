@@ -7,6 +7,14 @@ class Word < ActiveRecord::Base
     mess.downcase.gsub(/\W+\z/, '')
   end
 
+  def self.text(word)
+    word.gsub(/\W+\z/, '')
+  end
+
+  def self.punctuation(word)
+    word.scan(/\W+\z/).pop
+  end
+
   def self.syllables(word)
     existing_word = find_by_spelling(word)
     if existing_word
