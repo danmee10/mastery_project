@@ -11,3 +11,23 @@
  *= require_self
  *= require_tree .
  */
+
+/*span:hover {
+  font-weight: bold;
+  background-color: #5bc0de;
+  color: white;
+  border-radius: 2px;
+  padding: 2px;
+}*/
+
+span.selected-word {
+  font-weight: bold;
+  background-color: #5bc0de;
+  color: white;
+  border-radius: 2px;
+  padding: 2px;
+}
+
+.tool-buttons {
+  width: 120px;
+}

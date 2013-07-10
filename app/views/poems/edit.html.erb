@@ -13,11 +13,11 @@
   <% @poem.default_verse_form.each do |stanza| %>
   <table>
     <% if stanza.kind_of?(Array) %>
-      <% stanza.each_with_index do |line, index| %>
+      <% stanza.each_with_index do |line, line_index| %>
        <tr>
-          <td>
-            <% line.split.each do |word|%>
-              <span class="word"><%= Word.text(word) %></span><%= Word.punctuation(word) %>
+          <td class="line">
+            <% line.split.each_with_index do |word, word_index|%>
+              <span class="word" id="<%=line_index%><%=word_index%>"><%= Word.text(word) %></span><%= Word.punctuation(word) %>
             <% end %>
           </td>
           <td></td>
@@ -27,19 +27,6 @@
           <td><%= Word.syllables(line) %></td>
        </tr>
       <% end %>
-    <% else %>
-        <tr>
-          <td>
-            <% stanza.split.each do |word|%>
-              <span class="word"><%= Word.text(word) %></span><%= Word.punctuation(word) %>
-            <% end %>
-          </td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><%= Word.syllables(stanza) %></td>
-        </tr>
     <% end %>
     <hr/>
   <% end %>
