@@ -17,6 +17,7 @@ $(document).ready(function() {
     var wordPosition = this.id;
     var wordElement = $(this);
     var line = $(this).parent()
+    evt.stopPropagation();
 
   // define options popover
     $('td.line').popover({
@@ -27,14 +28,13 @@ $(document).ready(function() {
       content: function() { return optionsMenu(); }
     });
 
-    evt.stopPropagation();
     $("span.selected-word").removeClass("selected-word");
     $(this).addClass('selected-word');
     $( "td.line" ).not(line).popover('hide');
     line.data('popover').options.content = function() { return optionsMenu(); }
     line.popover('show');
 
-    // close popovers and remove selected-word class on exit title bar
+    // close popovers and remove selected-word class on click title bar
     $("h3.popover-title").on('click', function(){
       $('td.line').popover('hide');
       $("span.selected-word").removeClass("selected-word");
@@ -46,25 +46,34 @@ $(document).ready(function() {
     });
   });
 
+// close popovers and remove selected-word class on press escape key
+  // $(document).keypress(function(e) {
+  //     if (e.keyCode == 27) {
+  //         $("td.line").popover('hide');
+  //         $("span.selected-word").removeClass("selected-word");
+  //     }
+  // });
 
 // form for manually replacing words
   $("#replacement-form").hide();
   replacementForm = function(wordSpelling, wordPosition, wordElement){
+    var poemId = parseFloat($(".poem-id").attr("id"));
     var popover = wordElement.parent('td').data('popover');
     popover.options.content = function() { return  $('#replacement-form').html(); }
     popover.show();
 
-    // submits new word (or words?) to poems controller, and updates poem_text
-    $("div.popover #replace-button").on("click", function(){
-      var replacement = $("#replacement-text").val();
+    // submits new word to poems controller, and updates poem_text
+    $("div.popover").on("click", "#replace-button", function(){
+      var replacement = $(this).siblings().val(); //why didn't $("#replacement-text").val() work here?
+
       $.ajax({
         type: "PUT",
-        url: "/api/poems/" + 9 + ".json",
+        url: "/api/poems/" + poemId + ".json",
         data: { oldWord: wordPosition, newWord: replacement },
         dataType: "json"
       });
-      wordElement.text(replacement)
-      $("#replacement-form").hide();
+      wordElement.text(replacement);
+      popover.destroy(); //if you just hide it, it will replace every word that has been changed on the row with the new word
     });
   }
 });

@@ -7,7 +7,7 @@ class Api::PoemsController < ApplicationController
 
     respond_to do |format|
       format.json { render json: @payload }
-      format.xml { render xml: @word }
+      # format.xml { render xml: @word }
     end
   end
 end
