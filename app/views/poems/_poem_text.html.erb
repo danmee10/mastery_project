@@ -1,0 +1,26 @@
+<div class='span5 offset1 poem-text'>
+      <% word_position = 0 %>
+      <% @poem.default_verse_form.each do |stanza| %>
+  <table>
+          <% stanza.each do |line| %>
+     <tr>
+        <td class='line'>
+              <% line.split.each do |word|%>
+                <span class='word' id='<%= word_position %>'><%= Word.text(word) %></span><%= Word.punctuation(word) %>
+                <% word_position += 1 %>
+              <% end %>
+        </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+        <td><%= Word.syllables(line) %></td>
+     </tr>
+
+
+        <% end %>
+                      <hr/>
+  </table>
+      <% end %>
+                    <hr/>
+</div>

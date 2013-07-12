@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 describe Poem do
-  let(:subject) { Poem.create(original_text: "some text", poem_text: "altered text")}
+  let(:subject) { Poem.create(original_text: "some text", poem_text: "altered text is fun to write. yay for this thing!")}
 
   its(:original_text) { "some text" }
-  its(:poem_text) { "altered text" }
+  its(:poem_text) { "altered text is fun to write. yay for this thing!" }
 
   it "validates presence of original_text" do
-    poem = Poem.new(poem_text: "altered text")
+    poem = Poem.new(poem_text: "altered text is fun to write. yay for this thing!")
     expect(poem.save).to be_false
   end
 
@@ -23,6 +23,15 @@ describe Poem do
         expect(poem.default_verse_form.first.first.class).to eq String
         expect(Word.syllables(poem.default_verse_form.first.first)).to eq 8
         expect(poem.default_verse_form.first.first).to eq "This is a block of text that has"
+      end
+    end
+  end
+
+  describe "#replace(old_word, new_word)" do
+    context "given the index of a word in the poem's poem_text, and a single word string" do
+      it "inserts the new_word at the given index point" do
+        subject.replace(5, "make")
+        expect(subject.poem_text).to eq "altered text is fun to make. yay for this thing!"
       end
     end
   end

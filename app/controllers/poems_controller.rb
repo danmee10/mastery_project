@@ -23,6 +23,10 @@ class PoemsController < ApplicationController
   def update
     @poem = Poem.find(params[:id])
     @poem.update_attributes(params[:poem])
-    redirect_to edit_poem_path(@poem)
+
+    respond_to do |format|
+      format.html { redirect_to edit_poem_path(@poem) }
+      format.js
+    end
   end
 end

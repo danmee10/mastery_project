@@ -8,6 +8,17 @@ class Poem < ActiveRecord::Base
     lines_array(dirty_words_array).each_slice(max_lines).to_a
   end
 
+  def replace(index, word)
+    edit = poem_text.split(" ")
+    punctuation = edit[index].scan(/\W+\z/).pop
+    if punctuation == nil
+      edit[index] = word
+    else
+      edit[index] = word + punctuation
+    end
+    update_attributes(poem_text: edit.join(" "))
+  end
+
 private
   def lines_array(dirty_words_array)
     current_line = []

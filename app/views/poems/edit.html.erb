@@ -9,28 +9,4 @@
 
 
 
-<div class="span5 offset1">
-  <% @poem.default_verse_form.each do |stanza| %>
-  <table>
-    <% if stanza.kind_of?(Array) %>
-      <% stanza.each_with_index do |line, line_index| %>
-       <tr>
-          <td class="line">
-            <% line.split.each_with_index do |word, word_index|%>
-              <span class="word" id="<%=line_index%><%=word_index%>"><%= Word.text(word) %></span><%= Word.punctuation(word) %>
-            <% end %>
-          </td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><%= Word.syllables(line) %></td>
-       </tr>
-      <% end %>
-    <% end %>
-    <hr/>
-  <% end %>
-  </table>
-  <hr/>
-</div>
-
+<%= render partial: "poem_text" %>

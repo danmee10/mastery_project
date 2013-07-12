@@ -1,4 +1,4 @@
-<%= simple_form_for @poem do |f| %>
+<%= simple_form_for @poem, remote: true do |f| %>
   <%= f.input :max_lines, input_html: { value: @poem.max_lines } %>
   <%= f.input :max_syllables, input_html: { value: @poem.max_syllables } %>
   <%= f.submit "Update", class: "btn btn-info" %>
@@ -18,7 +18,7 @@
 <div class="d-box" id="replacement-form" title="Replace">
   <p class="word"></p>
   <div class="input-append">
-    <input class="span2" id="appendedInputButton" type="text">
+    <input class="span2" id="replacement-text" type="text">
     <button class="btn" type="button" id="replace-button">Replace!</button>
   </div>
 </div>
