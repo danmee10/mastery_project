@@ -14,7 +14,7 @@ describe "A user on the edit page" do
         expect(page).to have_content "Words for the editing"
       end
 
-      it "can edit the poem text" do
+      xit "can edit the poem text" do
         expect(Poem.all.first.original_text).to eq "Words for the editing"
         expect(Poem.all.first.poem_text).to eq "Words for the editing"
         click_on "Words"
