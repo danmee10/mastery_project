@@ -1,0 +1,10 @@
+
+<div class="text-center auth-form">
+  <h3>Create Account</h3>
+  <%= simple_form_for @user do |f| %>
+    <%= f.input :email, label: false, placeholder: "email" %>
+    <%= f.input :password, label: false, placeholder: "password" %>
+    <%= f.input :password_confirmation, required: true, label: false, placeholder: "password confirmation" %>
+    <%= f.button :submit, "Create Account", class: "btn btn-primary"  %>
+  <% end %>
+</div>

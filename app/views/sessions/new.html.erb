@@ -1,0 +1,9 @@
+<div class="text-center auth-form">
+  <h3>Log in</h3>
+
+  <%= simple_form_for :sessions, :url => sessions_path, method: 'POST' do |f| %>
+    <%= f.input :email, label: false, input_html: { placeholder: "email" } %>
+    <%= f.input :password, label: false, input_html: { placeholder: "password" } %>
+    <%= f.button :submit, "Login", class:"btn btn-primary" %>
+  <% end %>
+

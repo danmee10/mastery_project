@@ -2,8 +2,12 @@
   <div class="navbar-inner">
     <a class="brand" href="/">PoemEngine</a>
     <ul class="nav pull-right">
-      <li><a href="#">Login</a></li>
-      <li><a href="#">Sign up</a></li>
+      <% if current_user %>
+        <li><a href="/logout">Logout</a></li>
+      <% else %>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Sign up</a></li>
+      <% end %>
     </ul>
   </div>
 </div>
