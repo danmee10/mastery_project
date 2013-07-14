@@ -19,7 +19,7 @@ describe Word do
       end
 
       it "includes apostrophes for contractions" do
-        expect(Word.clean("what's")).to eq "what's"
+        expect(Word.clean("what's.")).to eq "what's"
       end
     end
   end

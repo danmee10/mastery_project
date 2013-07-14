@@ -1,14 +1,41 @@
 $(document).ready(function() {
 
-// selected word's spelling
-  function currentWord(){
-    return $("span.selected-word").text();
+// current poem's id
+  var poemId = parseFloat($(".poem-id").attr("id"));
+
+
+// selected word's spelling, and X for closing the popover
+  $("#popover-title").hide();
+// sets the popover title to the selected words spelling with an X for closing it
+  function popoverTitle() {
+    var spelling = $("span.selected-word").text();
+    $("span.word-spelling").text(spelling);
+    return $("#popover-title").html();
   }
 
 // buttons for editing words --hidden until popover called on word
   $('#tool-buttons').hide();
-  function optionsMenu(){
-    return $('#tool-buttons').html();
+// form for manually replacing words
+  $("#replacement-form").hide();
+
+// returns appropriate popover content
+  function popoverContent(content) {
+    if (content == "options") {
+      return $('#tool-buttons').html();
+    } else {
+      return $('#replacement-form').html();
+    }
+  }
+
+// define options popover and sets content
+  function definePopover(content) {
+    $('td.line').popover({
+      placement: "left",
+      trigger: "manual",
+      html: true,
+      title: function() { return popoverTitle(); },
+      content: function() { return popoverContent(content); }
+    });
   }
 
 // call options popover on a word, anchored to that word's row
@@ -16,51 +43,38 @@ $(document).ready(function() {
     var wordSpelling = $(this).text();
     var wordPosition = this.id;
     var wordElement = $(this);
-    var line = $(this).parent()
+    var line = $(this).parent();
     evt.stopPropagation();
 
-  // define options popover
-    $('td.line').popover({
-      placement: "left",
-      trigger: "manual",
-      html: true,
-      title: function() { return currentWord(); },
-      content: function() { return optionsMenu(); }
-    });
+    definePopover("options");
 
     $("span.selected-word").removeClass("selected-word");
-    $(this).addClass('selected-word');
+    wordElement.addClass('selected-word');
     $( "td.line" ).not(line).popover('hide');
-    line.data('popover').options.content = function() { return optionsMenu(); }
     line.popover('show');
 
-    // close popovers and remove selected-word class on click title bar
-    $("h3.popover-title").on('click', function(){
-      $('td.line').popover('hide');
+    // close popovers and remove selected-word class on click 'X'
+    $("span#close-popover").on('click', function(){
+      $('td.line').popover('destroy');
       $("span.selected-word").removeClass("selected-word");
     });
 
     // open replacement form, on button click
     $("div.popover #replace-with").on("click",function() {
+      line.popover('destroy');
       replacementForm(wordSpelling,wordPosition,wordElement);
     });
   });
 
-// close popovers and remove selected-word class on press escape key
-  // $(document).keypress(function(e) {
-  //     if (e.keyCode == 27) {
-  //         $("td.line").popover('hide');
-  //         $("span.selected-word").removeClass("selected-word");
-  //     }
-  // });
-
-// form for manually replacing words
-  $("#replacement-form").hide();
   replacementForm = function(wordSpelling, wordPosition, wordElement){
-    var poemId = parseFloat($(".poem-id").attr("id"));
-    var popover = wordElement.parent('td').data('popover');
-    popover.options.content = function() { return  $('#replacement-form').html(); }
-    popover.show();
+    definePopover("fuckknickle");
+    wordElement.parent().popover('show');
+
+    // close popovers and remove selected-word class on click 'X'
+    $("span#close-popover").on('click', function(){
+      $('td.line').popover('destroy');
+      $("span.selected-word").removeClass("selected-word");
+    });
 
     // submits new word to poems controller, and updates poem_text
     $("div.popover").on("click", "#replace-button", function(){
@@ -72,12 +86,12 @@ $(document).ready(function() {
         data: { oldWord: wordPosition, newWord: replacement },
         dataType: "json"
       });
+      $("span.selected-word").removeClass("selected-word");
       wordElement.text(replacement);
-      popover.destroy(); //if you just hide it, it will replace every word that has been changed on the row with the new word
+      wordElement.parent().popover('destroy');
     });
   }
 });
 
 // WTF ::
-  // stopPropagation + preventDefault
   // function whatever() {} -|vs|- whatever = function() {} -|vs|- var whatever = function() {}

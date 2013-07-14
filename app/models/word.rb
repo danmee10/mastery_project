@@ -16,11 +16,11 @@ class Word < ActiveRecord::Base
   end
 
   def self.syllables(word)
-    existing_word = find_by_spelling(word)
-    if existing_word
-      existing_word.syllable_count
-    else
+    # existing_word = find_by_spelling(word)
+    # if existing_word
+    #   existing_word.syllable_count
+    # else
       Odyssey.flesch_kincaid_re("#{word}", true)["syllable_count"]
-    end
+    # end
   end
 end

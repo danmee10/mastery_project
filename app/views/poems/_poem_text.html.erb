@@ -1,25 +1,19 @@
-      <% word_position = 0 %>
-      <% @poem.default_verse_form.each do |stanza| %>
-  <table>
-          <% stanza.each do |line| %>
-     <tr>
-        <td class='line'>
+<% word_position = 0 %>
+  <% @poem.default_verse_form.each do |stanza| %>
+    <table style="width:100%">
+      <% stanza.each do |line| %>
+        <tr>
+          <td class='line'>
               <% line.split.each do |word|%>
                 <span class='word' id='<%= word_position %>'><%= Word.text(word) %></span><%= Word.punctuation(word) %>
                 <% word_position += 1 %>
               <% end %>
-        </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-        <td><%= Word.syllables(line) %></td>
-     </tr>
-
-
-        <% end %>
-                      <hr/>
-  </table>
+            <span class="pull-right"><%= Word.syllables(line) %></span>
+          </td>
+        </tr>
       <% end %>
-                    <hr/>
+      <hr/>
+    </table>
+  <% end %>
+<hr/>
 
