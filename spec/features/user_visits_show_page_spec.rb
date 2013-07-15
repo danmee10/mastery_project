@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "A user's show page" do
   let(:user) { User.create(email: "danmee@gmail.com", password: "password") }
+  let(:poem) { Poem.create(original_text: "bla bla bla", poem_text: "this is more BLA") }
 
   def login(email, password)
     visit '/login'
@@ -25,5 +26,23 @@ describe "A user's show page" do
     visit user_path(user2)
     expect(page).to have_content "You must login to visit that page!"
     expect(current_path).to eq login_path
+  end
+
+  context "for a userwho has previously created poems" do
+    it "will show a list of their poems" do
+      user.poems << poem
+      login(user.email, "password")
+      visit user_path(user)
+      expect(page).to have_content "Untitled"
+    end
+  end
+
+  context "for a user with no poems" do
+    it "will display a message saying that the user has no poems, and link to new_poem_path" do
+      login(user.email, "password")
+      visit user_path(user)
+      expect(page).to have_content "You have no written any poems yet"
+      expect(page).to have_link "Create Poem"
+    end
   end
 end

@@ -7,6 +7,9 @@ class PoemsController < ApplicationController
   def create
     @poem = Poem.new(params[:poem])
     @poem.poem_text ||= @poem.original_text
+    if current_user
+      @poem.user_id = current_user.id
+    end
 
     if @poem.save
       redirect_to edit_poem_path(@poem)

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
-      login(@user.email, @user.password)
+      auto_login(@user)
       flash[:notice] = "Account created! Welcome #{@user.email}!"
       redirect_back_or_to root_path
     else

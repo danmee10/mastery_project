@@ -11,16 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130715143415) do
+ActiveRecord::Schema.define(:version => 20130715182651) do
 
   create_table "poems", :force => true do |t|
     t.text     "original_text"
     t.text     "poem_text"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.integer  "max_syllables", :default => 8
     t.integer  "max_lines",     :default => 4
     t.integer  "user_id"
+    t.string   "title",         :default => "Untitled"
   end
 
   add_index "poems", ["user_id"], :name => "index_poems_on_user_id"

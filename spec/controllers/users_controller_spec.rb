@@ -30,8 +30,10 @@ describe UsersController do
 
   describe "GET #show" do
     it "finds the correct user" do
-      User.create(email: "email@email.com", password: "password")
-      get :show, {id: 1}
+      @user = User.create(email: "email@email.com", password: "password")
+      controller.stub(:require_login).and_return(nil)
+      controller.stub(:authenticate).and_return(nil)
+      get :show, :id => @user.id
       expect(assigns[:user].class).to eq User
       expect(assigns[:user].email).to eq "email@email.com"
     end

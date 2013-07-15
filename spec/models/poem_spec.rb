@@ -1,10 +1,11 @@
 require 'spec_helper'
 
 describe Poem do
-  let(:subject) { Poem.create(original_text: "some text", poem_text: "altered text is fun to write. yay for this thing!")}
+  let(:subject) { Poem.create(title: "Test Poem", original_text: "some text", poem_text: "altered text is fun to write. yay for this thing!")}
 
   its(:original_text) { "some text" }
   its(:poem_text) { "altered text is fun to write. yay for this thing!" }
+  its(:title) { "Test Poem" }
 
   it "validates presence of original_text" do
     poem = Poem.new(poem_text: "altered text is fun to write. yay for this thing!")

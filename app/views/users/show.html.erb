@@ -1,7 +1,16 @@
 <%= render partial: "home_side_menu" %>
 
-<ul>
-  <% @user.poems.each do |poem| %>
-    <%= poem.id %>
+<div class="span7 offset1">
+  <% if @user.poems == [] %>
+    <div class="text-center">
+      <h3>You have no written any poems yet</h3>
+      <%= link_to "Create Poem", new_poem_path %>
+    </div>
+  <% else %>
+    <ul>
+      <% @user.poems.each do |poem| %>
+        <%= poem.title %>
+      <% end %>
+    </ul>
   <% end %>
-</ul>
+</div>

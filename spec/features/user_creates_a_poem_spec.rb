@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe "A user on the edit page" do
+  let(:user) { User.create(email: "danmee@gmail.com", password: "password") }
+
+  def login(email, password)
+    visit '/login'
+    fill_in "email", with: email
+    fill_in "password", with: password
+    within(".auth-form") do
+      click_on "Login"
+    end
+  end
+
   context "who isn't signed in" do
     context "after entering original text into the main form and clicking begin" do
       before :each do
@@ -23,10 +34,19 @@ describe "A user on the edit page" do
         click_on "Replace"
         expect(Poem.all.first.poem_text).to eq "Statements for the editing"
       end
+
+      it "can log in and save the poem to their account"
     end
   end
 
   context "who is logged into their account" do
-    it "can edit the original text and save the poem for later"
+    it "can edit the original text and save the poem for later" do
+      login(user.email, "password")
+      visit "/"
+      fill_in :poem_original_text, with: "Words for the editing"
+      click_on "Begin!"
+      expect(user.poems.count).to eq 1
+      expect(user.poems.first.poem_text).to eq "Words for the editing"
+    end
   end
 end
