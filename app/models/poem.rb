@@ -1,6 +1,8 @@
 class Poem < ActiveRecord::Base
   attr_accessible :original_text, :poem_text, :max_lines, :max_syllables
 
+  belongs_to :user
+
   validates :original_text, presence: true
 
   def default_verse_form

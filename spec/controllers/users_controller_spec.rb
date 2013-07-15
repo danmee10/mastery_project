@@ -27,4 +27,13 @@ describe UsersController do
       expect(assigns[:user].email).to eq "dan@dan.mee"
     end
   end
+
+  describe "GET #show" do
+    it "finds the correct user" do
+      User.create(email: "email@email.com", password: "password")
+      get :show, {id: 1}
+      expect(assigns[:user].class).to eq User
+      expect(assigns[:user].email).to eq "email@email.com"
+    end
+  end
 end

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :require_login, :only => [:edit, :update]
-  before_filter :authenticate, :only => [:edit, :update]
+  before_filter :require_login, :only => [:edit, :update, :show]
+  before_filter :authenticate, :only => [:edit, :update, :show]
 
   def new
     @user = User.new
@@ -32,5 +32,9 @@ class UsersController < ApplicationController
       flash[:error] = "Invalid email or password"
       redirect_to edit_user_path(@user)
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 end

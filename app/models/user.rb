@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   authenticates_with_sorcery!
   attr_accessible :username, :email, :password, :password_confirmation
 
+  has_many :poems
+
   validates :email, presence: true, uniqueness: true,
             format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/ }
   validates :password, presence: true

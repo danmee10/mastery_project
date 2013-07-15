@@ -1,0 +1,7 @@
+<%= render partial: "home_side_menu" %>
+
+<ul>
+  <% @user.poems.each do |poem| %>
+    <%= poem.id %>
+  <% end %>
+</ul>
