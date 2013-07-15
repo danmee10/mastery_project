@@ -1,0 +1,14 @@
+
+<div class="text-center auth-form">
+  <% if current_user == new_user_path %>
+    <h3>Create Account</h3>
+  <% else %>
+    <h3>Update Account</h3>
+  <% end %>
+  <%= simple_form_for @user do |f| %>
+    <%= f.input :email, label: false, placeholder: "email" %>
+    <%= f.input :password, label: false, placeholder: "password" %>
+    <%= f.input :password_confirmation, required: true, label: false, placeholder: "password confirmation" %>
+    <%= f.button :submit, "Submit", class: "btn btn-primary"  %>
+  <% end %>
+</div>
