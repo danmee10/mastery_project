@@ -8,7 +8,11 @@ class SessionsController < ApplicationController
     user = login(params[:sessions][:email], params[:sessions][:password], params[:sessions][:remember_me])
 
     if user
-      redirect_back_or_to root_path, notice: "Welcome back, #{current_user.email}!"
+      if session[:current_poem]
+        redirect_to edit_poem_path(session[:current_poem]), notice: "Welcome back, #{current_user.email}!"
+      else
+        redirect_back_or_to root_path, notice: "Welcome back, #{current_user.email}!"
+      end
     else
       flash[:error] = "Email or password was invalid."
       redirect_to login_path

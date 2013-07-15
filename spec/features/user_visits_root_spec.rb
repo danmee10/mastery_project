@@ -4,7 +4,7 @@ describe "A user on the home page" do
   it "will see content" do
     visit '/'
     expect(page).to have_content "PoemEngine"
-    expect(page).to have_content "Enter Text!"
+    expect(page).to have_content "Enter Prose!"
     expect(page).to have_field "poem_original_text"
   end
 

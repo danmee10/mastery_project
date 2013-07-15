@@ -35,7 +35,13 @@ describe "A user on the edit page" do
         expect(Poem.all.first.poem_text).to eq "Statements for the editing"
       end
 
-      it "can log in and save the poem to their account"
+      it "can log in and save the poem to their account" do
+        expect(current_path).to eq edit_poem_path(1)
+        login(user.email, "password")
+        expect(current_path).to eq edit_poem_path(1)
+        expect(user.poems.count).to eq 1
+        expect(user.poems.first.poem_text).to eq "Words for the editing"
+      end
     end
   end
 

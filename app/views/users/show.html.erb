@@ -7,9 +7,10 @@
       <%= link_to "Create Poem", new_poem_path %>
     </div>
   <% else %>
+  <h3>All Poems</h3>
     <ul>
       <% @user.poems.each do |poem| %>
-        <%= poem.title %>
+        <li><%= link_to "#{poem.title}", edit_poem_path(poem.id) %></li>
       <% end %>
     </ul>
   <% end %>

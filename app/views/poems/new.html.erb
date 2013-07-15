@@ -1,8 +1,9 @@
 <div class="row">
   <div class="form text-center">
-    <h1>Enter Text!</h1>
+    <h1>Enter Prose!</h1>
     <%= simple_form_for @poem do |f| %>
-      <%= f.text_area :original_text %>
+      <%= f.input :title, label: false %>
+      <%= f.text_area :original_text, placeholder: "Enter original text here..." %>
       <%= f.button :submit, "Begin!", class: "btn btn-primary" %>
     <% end %>
   </div>
