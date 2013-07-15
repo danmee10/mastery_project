@@ -3,6 +3,7 @@
     <a class="brand" href="/">PoemEngine</a>
     <ul class="nav pull-right">
       <% if current_user %>
+        <li><a href=<%="/users/#{current_user.id}/edit"%>>Account</a></li>
         <li><a href="/logout">Logout</a></li>
       <% else %>
         <li><a href="/login">Login</a></li>

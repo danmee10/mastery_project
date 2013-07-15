@@ -16,8 +16,5 @@ describe "A user on the home page" do
       click_on "Begin!"
       expect(Poem.all.count).to eq 1
     end
-
-    it "can login"
-    it "can signup"
   end
 end

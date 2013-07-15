@@ -15,6 +15,7 @@ describe "A user on the edit page" do
       end
 
       xit "can edit the poem text" do
+        #NEED TO WRITE AND API::POEMCONTROLLER SPEC FOR THIS
         expect(Poem.all.first.original_text).to eq "Words for the editing"
         expect(Poem.all.first.poem_text).to eq "Words for the editing"
         click_on "Words"

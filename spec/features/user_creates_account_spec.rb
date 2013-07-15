@@ -7,7 +7,7 @@ describe 'An anonymous user' do
       fill_in "user_email", with: "danmee10@gmail.com"
       fill_in "user_password", with: "password"
       fill_in "user_password_confirmation", with: "password"
-      click_on "Create Account"
+      click_on "Submit"
       expect(current_path).to eq root_path
       expect(User.all.count).to eq 1
       expect(User.all.first.email).to eq "danmee10@gmail.com"
@@ -17,7 +17,7 @@ describe 'An anonymous user' do
       visit '/signup'
       fill_in "user_password", with: "password"
       fill_in "user_password_confirmation", with: "password"
-      click_on "Create Account"
+      click_on "Submit"
       expect(current_path).to eq signup_path
       expect(User.all.count).to eq 0
       expect(page).to have_content "Invalid email or password."
@@ -28,7 +28,7 @@ describe 'An anonymous user' do
       fill_in "user_email", with: "danmee10.com"
       fill_in "user_password", with: "password"
       fill_in "user_password_confirmation", with: "password"
-      click_on "Create Account"
+      click_on "Submit"
       expect(current_path).to eq signup_path
       expect(User.all.count).to eq 0
       expect(page).to have_content "Invalid email or password."
@@ -40,7 +40,7 @@ describe 'An anonymous user' do
       fill_in "user_email", with: "danmee10@gmail.com"
       fill_in "user_password", with: "password"
       fill_in "user_password_confirmation", with: "password"
-      click_on "Create Account"
+      click_on "Submit"
       expect(page).to have_content "Invalid email or password."
       expect(current_path).to eq signup_path
       expect(User.all.count).to eq 1
@@ -51,7 +51,7 @@ describe 'An anonymous user' do
       fill_in "user_email", with: "danmee10@gmail.com"
       fill_in "user_password", with: "pas"
       fill_in "user_password_confirmation", with: "pas"
-      click_on "Create Account"
+      click_on "Submit"
       expect(page).to have_content "Invalid email or password."
       expect(current_path).to eq signup_path
       expect(User.all.count).to eq 0
@@ -62,7 +62,7 @@ describe 'An anonymous user' do
       fill_in "user_email", with: "danmee10@gmail.com"
       fill_in "user_password", with: "pas999999"
       fill_in "user_password_confirmation", with: "pas111111"
-      click_on "Create Account"
+      click_on "Submit"
       expect(page).to have_content "Invalid email or password."
       expect(current_path).to eq signup_path
       expect(User.all.count).to eq 0

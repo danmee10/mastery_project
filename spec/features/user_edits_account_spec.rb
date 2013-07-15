@@ -11,6 +11,7 @@ describe "User accounts" do
       click_on "Login"
     end
   end
+
   context "a logged in user" do
     it "can change their own email or password" do
       login(user.email, "password")
