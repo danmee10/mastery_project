@@ -8,20 +8,23 @@
 
 
 <div id="tool-buttons">
-  <p class="word"></p>
-  <p class="word-id"></p>
-  <p class="line-id"></p>
   <button class="btn tool-buttons" type="button" id="synonyms">Synonyms</button><br/>
   <button class="btn tool-buttons" type="button" id="rhyme-with">Rhyme-with</button><br/>
   <button class="btn tool-buttons" type="button" id="replace-with">Replace</button>
 </div>
 
 <div class="d-box" id="replacement-form" title="Replace">
-  <p class="word"></p>
   <div class="input-append">
     <input class="span2" id="replacement-text" type="text">
     <button class="btn" type="button" id="replace-button">Replace!</button>
   </div>
+</div>
+
+<div class="d-box" id="synonym-box" title="Synonyms">
+  <div class="progress progress-striped active">
+    <div class="bar" style="width: 100%;"></div>
+  </div>
+  <ul class="synonyms"></ul>
 </div>
 
 <div id="popover-title">

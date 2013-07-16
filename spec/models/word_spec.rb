@@ -24,7 +24,17 @@ describe Word do
     end
   end
 
-  describe ".syllable_count(word)" do
+  describe ".text(word)" do
+    context "given a string containing a word and punctuation" do
+      it "separates the word from the punctuation on either side of it and returns a three part array" do
+        expect(Word.text("(what's?)")).to eq ["(", "what's", "?)"]
+        expect(Word.text("first-class?[1][2]")).to eq ["", "first-class", "?[1][2]"]
+        expect(Word.text("a")).to eq ["", "a", ""]
+      end
+    end
+  end
+
+  describe ".syllables(word)" do
     context "given a word that isn't in the database" do
       it "returns the number of syllables in that word" do
         expect(Word.syllables("word")).to eq 1
@@ -35,6 +45,15 @@ describe Word do
       it "returns the number of syllables in that word" do
         Word.create(spelling: "word", syllable_count: 1)
         expect(Word.syllables("word")).to eq 1
+      end
+    end
+  end
+
+  describe ".locate(word)" do
+    context "given a string" do
+      it "returns a word object with that spelling" do
+        expect(Word.locate("word").class).to eq Word
+        expect(Word.locate("word").spelling).to eq "word"
       end
     end
   end

@@ -3,7 +3,6 @@ $(document).ready(function() {
 // current poem's id
   var poemId = parseFloat($(".poem-id").attr("id"));
 
-
 // selected word's spelling, and X for closing the popover
   $("#popover-title").hide();
 // sets the popover title to the selected words spelling with an X for closing it
@@ -17,17 +16,21 @@ $(document).ready(function() {
   $('#tool-buttons').hide();
 // form for manually replacing words
   $("#replacement-form").hide();
+// scafolding for synonyms list
+  $("#synonym-box").hide();
 
 // returns appropriate popover content
   function popoverContent(content) {
     if (content == "options") {
       return $('#tool-buttons').html();
-    } else {
+    } else if (content == "replace") {
       return $('#replacement-form').html();
+    } else {
+      return $('#synonym-box').html();
     }
   }
 
-// define options popover and sets content
+// define options popover and with appropriate content
   function definePopover(content) {
     $('td.line').popover({
       placement: "left",
@@ -64,13 +67,18 @@ $(document).ready(function() {
       line.popover('destroy');
       replacementForm(wordSpelling,wordPosition,wordElement);
     });
+    // open synonym list for current-word, on button click
+    $("div.popover #synonyms").on("click",function() {
+      line.popover('destroy');
+      synonymList(wordSpelling,wordPosition,wordElement);
+    });
   });
 
   replacementForm = function(wordSpelling, wordPosition, wordElement){
-    definePopover("fuckknickle");
+    definePopover("replace");
     wordElement.parent().popover('show');
 
-    // close popovers and remove selected-word class on click 'X'
+    // assigns 'close popovers' and 'remove selected-word class' to click 'X'
     $("span#close-popover").on('click', function(){
       $('td.line').popover('destroy');
       $("span.selected-word").removeClass("selected-word");
@@ -90,6 +98,54 @@ $(document).ready(function() {
       wordElement.text(replacement);
       wordElement.parent().popover('destroy');
     });
+  }
+
+  synonymList = function(wordSpelling, wordPosition, wordElement){
+    definePopover("synonyms");
+    wordElement.parent().popover('show');
+    $(".progress-striped").show();
+
+    // assigns 'close popovers' and 'remove selected-word class' to click 'X'
+    $("span#close-popover").on('click', function(){
+      $('td.line').popover('destroy');
+      $("span.selected-word").removeClass("selected-word");
+    });
+
+    //get synonyms
+    $.getJSON("/api/words/" + wordSpelling + ".json", function(data){
+      var html = ''
+      $.each(data.synonyms, function(entryIndex, entry) {
+        html += '<li class="replacement-word">' + entry + '</li>';
+      });
+
+      $(".progress-striped").hide();
+
+      $('ul.synonyms').html(html);
+      if ($('ul.synonyms').is(':empty')) {
+        $('ul.synonyms').text("Sorry, no synonyms found");
+      }
+      //clickable synonyms
+      // $('ul.synonyms > li').each(function() {
+      //   $(this).click(function() {
+
+      //     var replacement = $(this).text();
+      //     $.ajax({
+      //             type: "PUT",
+      //             url: "/api/poems/" + poemId + ".json",
+      //             data: { old_word: wordPosition, new_word: replacement },
+      //             dataType: "json"
+      //           });
+
+      //     wordElement.text(replacement);
+      //     $(this).css("font-weight", "bold");
+
+      //     $("span.selected-word").removeClass("selected-word");
+      //     $('ul.synonyms').html("");
+      //     wordElement.parent().popover('destroy');
+      //   });
+      // });
+    });
+    return false;
   }
 });
 // WTF ::

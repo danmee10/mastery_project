@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       auto_login(@user)
       if session[:current_poem]
-        flash[:notice] = "Welcome back, #{current_user.email}!"
+        flash[:notice] = "Account created! Welcome #{@user.email}!"
         redirect_to edit_poem_path(session[:current_poem])
       else
         flash[:notice] = "Account created! Welcome #{@user.email}!"
