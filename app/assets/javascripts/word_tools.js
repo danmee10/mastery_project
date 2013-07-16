@@ -105,8 +105,9 @@ $(document).ready(function() {
     wordElement.parent().popover('show');
     $(".progress-striped").show();
 
-    // assigns 'close popovers' and 'remove selected-word class' to click 'X'
+    // assigns 'close popovers' and 'remove selected-word class' to click 'X', also clears synonyms
     $("span#close-popover").on('click', function(){
+      $('ul.synonyms').html("");
       $('td.line').popover('destroy');
       $("span.selected-word").removeClass("selected-word");
     });

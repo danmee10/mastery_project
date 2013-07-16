@@ -18,11 +18,11 @@ class Word < ActiveRecord::Base
   end
 
   def self.locate(word)
-    existing_word = Word.where(spelling: "word").first
+    existing_word = Word.where(spelling: word).first
     if existing_word
       existing_word
     else
-      Word.create(spelling: "word")
+      Word.create(spelling: word)
     end
   end
 
@@ -43,7 +43,6 @@ class Word < ActiveRecord::Base
     end
   end
 
-private
   def lookup_and_add_synonyms
     thesaurus.each do |syn|
       synonyms << syn
