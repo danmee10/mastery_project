@@ -6,8 +6,8 @@ class Word < ActiveRecord::Base
   has_many :synonym_relationships
   has_many :synonyms, :through => :synonym_relationships
 
-  # has_many :rhyming_relationships
-  # has_many :rhymes, :through => :rhyming_relationships
+  has_many :rhyming_relationships
+  has_many :rhymes, :through => :rhyming_relationships
 
   def self.clean(mess)
     mess.downcase.gsub(/\W+\z/, '')
@@ -33,6 +33,38 @@ class Word < ActiveRecord::Base
     # else
       Odyssey.flesch_kincaid_re("#{word}", true)["syllable_count"]
     # end
+  end
+
+  def rhyme_lookup
+    if rhymes.first
+      rhymes
+    else
+      lookup_and_add_rhymes
+    end
+  end
+
+  def lookup_and_add_rhymes
+    rhyming_dictionary.each do |syn|
+      rhymes << syn
+    end
+    rhymes
+  end
+
+  def rhyming_dictionary
+    full_response = HTTParty.get("http://rhymebrain.com/talk?function=getRhymes&word=#{spelling}")
+    rhymes = rhyme_brain_parser(full_response).collect do |response|
+      if Word.find_by_spelling(response[:word])
+        Word.find_by_spelling(response[:word]).update_attributes(syllable_count: response[:syllables])
+        Word.find_by_spelling(response[:word])
+      else
+        Word.create(spelling: response[:word], syllable_count: response[:syllables])
+      end
+    end
+  end
+
+  def rhyme_brain_parser(response)
+    real_words = response.select { |rhyme| rhyme["flags"].to_s.match(/b/) != nil }
+    real_words.collect { |rhyme| {word: rhyme["word"], syllables: rhyme["syllables"].to_i} }
   end
 
   def synonym_lookup

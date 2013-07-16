@@ -90,10 +90,10 @@ describe Word do
     end
 
     context "given a word object with no saved rhymes" do
-      xit "looks the word up in a rhyming dictionary and returns an array of the rhymes" do
+      it "looks the word up in a rhyming dictionary and returns an array of the rhymes" do
         word = Word.create(spelling: "word")
         expect(word.rhyme_lookup.class).to eq Array
-        expect(word.rhyme_lookup.first.spelling).to eq "news"
+        expect(word.rhyme_lookup.first.spelling).to eq "heard"
       end
     end
   end

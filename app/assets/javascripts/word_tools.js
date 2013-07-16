@@ -77,7 +77,7 @@ $(document).ready(function() {
       synonymList(wordSpelling,wordPosition,wordElement);
     });
     // open synonym list for current-word, on button click
-    $("div.popover #rhymes").on("click",function() {
+    $("div.popover #rhyme-with").on("click",function() {
       line.popover('destroy');
       rhymeList(wordSpelling,wordPosition,wordElement);
     });
