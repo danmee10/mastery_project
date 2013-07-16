@@ -8,11 +8,7 @@ class Word < ActiveRecord::Base
   end
 
   def self.text(word)
-    word.gsub(/\W+\z/, '')
-  end
-
-  def self.punctuation(word)
-    word.scan(/\W+\z/).pop
+    word.partition(/([a-zA-Z]+...[a-zA-Z]+)|[a-zA-Z]+/)
   end
 
   def self.syllables(word)

@@ -5,7 +5,11 @@
         <tr>
           <td class='line'>
               <% line.split.each do |word|%>
-                <span class='word' id='<%= word_position %>'><%= Word.text(word) %></span><%= Word.punctuation(word) %>
+
+                <% pieces = Word.text(word) %>
+
+                  <%= pieces[0] %><span class='word' id='<%= word_position %>'><%=pieces[1]%></span><%= pieces[2] %>
+
                 <% word_position += 1 %>
               <% end %>
             <span class="pull-right"><%= Word.syllables(line) %></span>

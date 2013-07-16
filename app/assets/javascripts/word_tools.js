@@ -92,6 +92,5 @@ $(document).ready(function() {
     });
   }
 });
-
 // WTF ::
   // function whatever() {} -|vs|- whatever = function() {} -|vs|- var whatever = function() {}
