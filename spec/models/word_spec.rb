@@ -77,4 +77,24 @@ describe Word do
       end
     end
   end
+
+  describe "rhyme_lookup" do
+    context "given a word object with saved rhymes" do
+      it "returns an array of the rhymes" do
+        word = Word.create(spelling: "word")
+        word2 = Word.create(spelling: "bird")
+        word.rhymes << word2
+        expect(word.rhyme_lookup.class).to eq Array
+        expect(word.rhyme_lookup.first.spelling).to eq "bird"
+      end
+    end
+
+    context "given a word object with no saved rhymes" do
+      xit "looks the word up in a rhyming dictionary and returns an array of the rhymes" do
+        word = Word.create(spelling: "word")
+        expect(word.rhyme_lookup.class).to eq Array
+        expect(word.rhyme_lookup.first.spelling).to eq "news"
+      end
+    end
+  end
 end

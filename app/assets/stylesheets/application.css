@@ -37,3 +37,13 @@ span.selected-word {
   min-width: 200px;
   overflow: scroll;
 }
+li.replacement-word:hover{
+  font-weight: bold;
+}
+span.word:hover{
+  font-weight: bold;
+  background-color: #5bc0de;
+  color: white;
+  border-radius: 2px;
+  padding: 2px;
+}

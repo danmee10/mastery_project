@@ -18,15 +18,19 @@ $(document).ready(function() {
   $("#replacement-form").hide();
 // scafolding for synonyms list
   $("#synonym-box").hide();
+  // scafolding for rhyme list
+  $("#rhyme-box").hide();
 
 // returns appropriate popover content
   function popoverContent(content) {
-    if (content == "options") {
+    if (content == "options"){
       return $('#tool-buttons').html();
-    } else if (content == "replace") {
+    } else if (content == "replace"){
       return $('#replacement-form').html();
-    } else {
+    } else if(content == "synonyms"){
       return $('#synonym-box').html();
+    } else {
+      return $('#rhyme-box').html();
     }
   }
 
@@ -72,6 +76,11 @@ $(document).ready(function() {
       line.popover('destroy');
       synonymList(wordSpelling,wordPosition,wordElement);
     });
+    // open synonym list for current-word, on button click
+    $("div.popover #rhymes").on("click",function() {
+      line.popover('destroy');
+      rhymeList(wordSpelling,wordPosition,wordElement);
+    });
   });
 
   replacementForm = function(wordSpelling, wordPosition, wordElement){
@@ -107,9 +116,9 @@ $(document).ready(function() {
 
     // assigns 'close popovers' and 'remove selected-word class' to click 'X', also clears synonyms
     $("span#close-popover").on('click', function(){
-      $('ul.synonyms').html("");
-      $('td.line').popover('destroy');
       $("span.selected-word").removeClass("selected-word");
+      $('ul.synonyms').html("");
+      wordElement.parent().popover('destroy');
     });
 
     //get synonyms
@@ -126,27 +135,73 @@ $(document).ready(function() {
         $('ul.synonyms').text("Sorry, no synonyms found");
       }
       //clickable synonyms
-      // $('ul.synonyms > li').each(function() {
-      //   $(this).click(function() {
+      $('ul.synonyms > li').each(function() {
+        $(this).click(function() {
 
-      //     var replacement = $(this).text();
-      //     $.ajax({
-      //             type: "PUT",
-      //             url: "/api/poems/" + poemId + ".json",
-      //             data: { old_word: wordPosition, new_word: replacement },
-      //             dataType: "json"
-      //           });
+          var replacement = $(this).text();
+          $.ajax({
+            type: "PUT",
+            url: "/api/poems/" + poemId + ".json",
+            data: { oldWord: wordPosition, newWord: replacement },
+            dataType: "json"
+          });
+          wordElement.text(replacement);
 
-      //     wordElement.text(replacement);
-      //     $(this).css("font-weight", "bold");
-
-      //     $("span.selected-word").removeClass("selected-word");
-      //     $('ul.synonyms').html("");
-      //     wordElement.parent().popover('destroy');
-      //   });
-      // });
+          $("span.selected-word").removeClass("selected-word");
+          $('ul.synonyms').html("");
+          wordElement.parent().popover('destroy');
+        });
+      });
     });
     return false;
+  }
+
+//open rhymes table
+  rhymeList = function(wordSpelling,wordPosition,wordElement) {
+    definePopover("rhymes");
+    wordElement.parent().popover('show');
+    $(".progress-striped").show();
+
+    // assigns 'close popovers' and 'remove selected-word class' to click 'X', also clears synonyms
+    $("span#close-popover").on('click', function(){
+      $("span.selected-word").removeClass("selected-word");
+      $('ul.rhymes').html("");
+      wordElement.parent().popover('destroy');
+    });
+
+    //get rhymes
+    $.getJSON("/api/words/" + wordSpelling + ".json", function(data){
+      var html =''
+      $.each(data.rhymes, function(entryIndex, entry) {
+        html += '<li class="replacement-word">' + entry.spelling + '</li>';
+      });
+
+      $(".progress-striped").hide();
+
+      $('ul.rhymes').html(html);
+      if ($('ul.rhymes').is(':empty')) {
+        $('ul.rhymes').text("Sorry, no rhymes found");
+      }
+      //clickable rhymes
+      $('ul.rhymes > li').each(function() {
+        $(this).click(function() {
+
+          var replacement = $(this).text();
+          $.ajax({
+            type: "PUT",
+            url: "/api/poems/" + poemId + ".json",
+            data: { oldWord: wordPosition, newWord: replacement },
+            dataType: "json"
+          });
+          wordElement.text(replacement);
+
+          $("span.selected-word").removeClass("selected-word");
+          $('ul.rhymes').html("");
+          wordElement.parent().popover('destroy');
+        });
+      });
+    });
+    return false
   }
 });
 // WTF ::
