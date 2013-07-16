@@ -2,7 +2,6 @@ class Word < ActiveRecord::Base
   attr_accessible :spelling, :syllable_count
 
   validates :spelling, presence: true
-  validates_uniqueness_of :spelling, :scope => :part_of_speech
 
   has_many :synonym_relationships
   has_many :synonyms, :through => :synonym_relationships
@@ -34,5 +33,53 @@ class Word < ActiveRecord::Base
     # else
       Odyssey.flesch_kincaid_re("#{word}", true)["syllable_count"]
     # end
+  end
+
+  def synonym_lookup
+    if synonyms.first
+      synonyms
+    else
+      lookup_and_add_synonyms
+    end
+  end
+
+private
+  def lookup_and_add_synonyms
+    thesaurus.each do |syn|
+      synonyms << syn
+    end
+    synonyms
+  end
+
+  def thesaurus
+    key = ENV['THESAURUS_KEY']
+    full_response = HTTParty.get("http://words.bighugelabs.com/api/2/#{key}/#{spelling}/json")
+    unless full_response == ''
+      word_objects_array = thesaurus_parser(full_response).collect do |word|
+        if Word.find_by_spelling(word)
+          Word.find_by_spelling(word)
+        else
+          Word.create(spelling: word)
+        end
+      end
+    end
+    word_objects_array ? word_objects_array : []
+  end
+
+  def thesaurus_parser(response)
+    a = []
+    if response['noun']
+      a << response['noun']['syn']
+    end
+    if response['verb']
+      a << response['verb']['syn']
+    end
+    if response['adverb']
+      a << response['adverb']['syn']
+    end
+    if response['adjective']
+      a << response['adjective']['syn']
+    end
+    a.flatten
   end
 end

@@ -57,4 +57,24 @@ describe Word do
       end
     end
   end
+
+  describe "synonym_lookup" do
+    context "given a word object with saved synonyms" do
+      it "returns an array of the synonyms" do
+        word = Word.create(spelling: "word")
+        word2 = Word.create(spelling: "phrase")
+        word.synonyms << word2
+        expect(word.synonym_lookup.class).to eq Array
+        expect(word.synonym_lookup.first.spelling).to eq "phrase"
+      end
+    end
+
+    context "given a word object with no saved synonyms" do
+      it "looks the word up in a thesaurus and returns an array of the synonyms" do
+        word = Word.create(spelling: "word")
+        expect(word.synonym_lookup.class).to eq Array
+        expect(word.synonym_lookup.first.spelling).to eq "news"
+      end
+    end
+  end
 end

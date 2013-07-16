@@ -115,7 +115,7 @@ $(document).ready(function() {
     $.getJSON("/api/words/" + wordSpelling + ".json", function(data){
       var html = ''
       $.each(data.synonyms, function(entryIndex, entry) {
-        html += '<li class="replacement-word">' + entry + '</li>';
+        html += '<li class="replacement-word">' + entry.spelling + '</li>';
       });
 
       $(".progress-striped").hide();
