@@ -31,3 +31,9 @@ span.selected-word {
 .tool-buttons {
   width: 120px;
 }
+
+.popover-content {
+  max-height: 200px;
+  min-width: 200px;
+  overflow: scroll;
+}
