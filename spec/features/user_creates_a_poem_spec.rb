@@ -66,5 +66,21 @@ describe "A user on the edit page" do
       expect(user.poems.count).to eq 1
       expect(user.poems.first.poem_text).to eq "Words for the editing"
     end
+
+    it "can not edit any poems that do not belong to them" do
+      user1 = User.create(email: "emai@email.com", password: "password")
+      poem = Poem.create(original_text: "These are the words of the poem", poem_text: "These are more words")
+      poem.user_id = 1
+      poem.save
+      login(user.email, "password")
+      visit "/"
+      fill_in :poem_original_text, with: "Words for the editing"
+      click_on "Begin!"
+      expect(current_path).to eq edit_poem_path(2)
+      expect(user.id).to eq 2
+      visit edit_poem_path(1)
+      expect(page).to have_content "You are not authorized to visit that page!"
+      expect(current_path).to eq "/"
+    end
   end
 end

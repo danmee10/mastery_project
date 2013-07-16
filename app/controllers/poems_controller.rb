@@ -1,4 +1,5 @@
 class PoemsController < ApplicationController
+  before_filter :poem_protection, :only => [:edit, :update]
 
   def new
     @poem = Poem.new
