@@ -9,4 +9,8 @@ $(document).ready(function(){
       isFitWidth: true
     });
   });
+
+  $(".poem-title-link").on("click", function(){
+
+  });
 });

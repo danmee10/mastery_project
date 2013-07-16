@@ -21,6 +21,7 @@ class PoemsController < ApplicationController
 
   def edit
     @poem = Poem.find(params[:id])
+
     session[:current_poem] = @poem.id
     if @poem.user_id == nil && current_user
       current_user.poems << @poem

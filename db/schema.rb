@@ -16,13 +16,13 @@ ActiveRecord::Schema.define(:version => 20130716141838) do
   create_table "poems", :force => true do |t|
     t.text     "original_text"
     t.text     "poem_text"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
+    t.datetime "created_at",                                                                                                                  :null => false
+    t.datetime "updated_at",                                                                                                                  :null => false
     t.integer  "max_syllables", :default => 8
     t.integer  "max_lines",     :default => 4
     t.integer  "user_id"
     t.string   "title",         :default => "Untitled"
-    t.string   "pic"
+    t.string   "pic",           :default => "http://3.bp.blogspot.com/_D274vwEvfTU/S7IL0L3yCoI/AAAAAAAAAFc/2qnq3yss6SI/s200/Happiness_1.jpg"
   end
 
   add_index "poems", ["user_id"], :name => "index_poems_on_user_id"
