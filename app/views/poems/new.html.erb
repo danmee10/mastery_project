@@ -4,12 +4,12 @@
     <%= simple_form_for @poem do |f| %>
       <%= f.input :title, label: false %>
       <%= f.text_area :original_text, placeholder: "Enter original text here..." %>
-    <% end %>
   </div>
 </div>
 
 <div class="row">
   <div class="text-center">
       <%= f.button :submit, "Begin!", class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
