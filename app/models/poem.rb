@@ -1,5 +1,5 @@
 class Poem < ActiveRecord::Base
-  attr_accessible :original_text, :poem_text, :max_lines, :max_syllables, :title
+  attr_accessible :original_text, :poem_text, :max_lines, :max_syllables, :title, :pic
 
   belongs_to :user
 

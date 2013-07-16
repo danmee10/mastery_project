@@ -7,11 +7,24 @@
       <%= link_to "Create Poem", new_poem_path %>
     </div>
   <% else %>
-  <h3>All Poems</h3>
-    <ul>
-      <% @user.poems.each do |poem| %>
-        <li><%= link_to "#{poem.title}", edit_poem_path(poem.id) %></li>
-      <% end %>
-    </ul>
+  <h3 class="text-center">All Poems</h3>
+    <div class="masonry-container">
+        <% @user.poems.each do |poem| %>
+
+          <% if poem.pic %>
+            <div class="poem-pic text-center">
+              <%= link_to image_tag(poem.pic), edit_poem_path(poem.id) %>
+              <div class="poem-title-link">
+                <%= "#{poem.title}" %>
+              </div>
+            </div>
+          <% else %>
+              <div class="poem-pic text-center poem-title-link">
+                <%= "#{poem.title}" %>
+              </div>
+          <% end %>
+
+        <% end %>
+    </div>
   <% end %>
 </div>

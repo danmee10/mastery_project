@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130716134158) do
+ActiveRecord::Schema.define(:version => 20130716141838) do
 
   create_table "poems", :force => true do |t|
     t.text     "original_text"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20130716134158) do
     t.integer  "max_lines",     :default => 4
     t.integer  "user_id"
     t.string   "title",         :default => "Untitled"
+    t.string   "pic"
   end
 
   add_index "poems", ["user_id"], :name => "index_poems_on_user_id"
