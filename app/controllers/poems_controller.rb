@@ -41,6 +41,7 @@ class PoemsController < ApplicationController
   end
 
   def index
+    fail
     @poems = Poem.where(public_poem: true)
   end
 
