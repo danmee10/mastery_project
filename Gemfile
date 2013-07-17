@@ -24,6 +24,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'pry'
   gem 'binding_of_caller'
+  gem 'database_cleaner'
 end
 
 group :development do
