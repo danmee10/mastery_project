@@ -7,9 +7,9 @@
       <%= link_to "Create Poem", new_poem_path %>
     </div>
   <% else %>
-  <h3 class="text-center">All Poems</h3>
+  <h3 class="text-center"><%=@heading%></h3>
     <div class="masonry-container">
-        <% @user.poems.each do |poem| %>
+        <% @poems.each do |poem| %>
 
           <% if poem.pic %>
             <div class="poem-pic text-center">

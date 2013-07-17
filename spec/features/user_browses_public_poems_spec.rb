@@ -26,6 +26,10 @@ describe "A user" do
       expect(page). to have_content "You must login to visit that page!"
       expect(current_path).to eq login_path
     end
+
+    xit "can search poems by name" do
+
+    end
   end
 
   context "who is logged in" do

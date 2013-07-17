@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "A user's show page" do
   let(:user) { User.create(email: "danmee@gmail.com", password: "password") }
   let(:poem) { Poem.create(original_text: "bla bla bla", poem_text: "this is more BLA") }
+  let(:poem2) { Poem.create(original_text: "bla bla bla more of this", poem_text: "this is more BLA and more and and", title: "test poem") }
 
   def login(email, password)
     visit '/login'
@@ -28,12 +29,28 @@ describe "A user's show page" do
     expect(current_path).to eq login_path
   end
 
-  context "for a userwho has previously created poems" do
+  context "for a user who has previously created poems" do
     it "will show a list of their poems" do
       user.poems << poem
       login(user.email, "password")
       visit user_path(user)
       expect(page).to have_content "Untitled"
+    end
+
+    it "can filter which poems are displayed by whether or not they are public" do
+      user.poems << poem
+      user.poems << poem2
+      poem2.public_poem = false
+      poem2.save
+      login(user.email, "password")
+      visit user_path(user)
+      click_on "All poems"
+      expect(page).to have_content "Untitled"
+      expect(page).to have_content "test poem"
+      click_on "Private poems"
+      expect(page).to_not have_content "Untitled"
+      click_on "Public poems"
+      expect(page).to_not have_content "test poem"
     end
   end
 

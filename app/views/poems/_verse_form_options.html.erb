@@ -1,5 +1,8 @@
+
+
 <%= simple_form_for @poem, remote: true do |f| %>
-  <%= f.input :pic, input_html: { value: @poem.pic } %>
+  <%= f.input :public_poem, as: :select, label: "Public", input_html: { value: @poem.public_poem } %>
+  <%= f.input :pic, label: "Picture URL", input_html: { value: @poem.pic } %>
   <%= f.input :title, input_html: { value: @poem.title } %>
   <%= f.input :max_lines, input_html: { value: @poem.max_lines } %>
   <%= f.input :max_syllables, input_html: { value: @poem.max_syllables } %>
