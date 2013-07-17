@@ -14,7 +14,7 @@ class Word < ActiveRecord::Base
   end
 
   def self.text(word)
-    word.partition(/([a-zA-Z]+...[a-zA-Z]+)|[a-zA-Z]+/)
+    word.partition(/([a-zA-Z]+...[a-zA-Z]+)|[a-zA-Z]+|[0-9]+/)
   end
 
   def self.locate(word)

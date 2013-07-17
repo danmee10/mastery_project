@@ -54,9 +54,6 @@ describe "A user's show page" do
     end
   end
 
-  # SQLite3::BusyException: database is locked:
-  # INSERT INTO "users" ("created_at", "crypted_password", "email", "remember_me_token", "remember_me_token_expires_at", "reset_password_email_sent_at", "reset_password_token", "reset_password_token_expires_at", "salt", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-
   context "for a user with no poems" do
     it "will display a message saying that the user has no poems, and link to new_poem_path" do
       login(user.email, "password")
