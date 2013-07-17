@@ -41,11 +41,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.includes(:poems).find(params[:id])
+    @poems = @user.poems
     if params[:public_poem]
-      @poems = @user.poems.select{ |poem| poem.public_poem.to_s == params[:public_poem] }
       params[:public_poem] == "true" ? @heading = "Public poems" : @heading = "Private poems"
     else
-      @poems = @user.poems
       @heading = "All poems"
     end
   end

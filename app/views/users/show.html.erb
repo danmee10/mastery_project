@@ -12,10 +12,12 @@
         <% @poems.each do |poem| %>
 
           <% if poem.pic %>
-            <div class="poem-pic text-center">
-              <%= link_to image_tag(poem.pic), edit_poem_path(poem.id) %>
-              <div class="poem-title-link">
-                <%= link_to "#{poem.title}", edit_poem_path(poem.id), class: "poem-title-link" %>
+            <div class=<%="public-#{poem.public_poem}"%>>
+              <div class="poem-pic text-center">
+                <%= link_to image_tag(poem.pic), edit_poem_path(poem.id) %>
+                <div class="poem-title-link">
+                  <%= link_to "#{poem.title}", edit_poem_path(poem.id), class: "poem-title-link" %>
+                </div>
               </div>
             </div>
           <% else %>
