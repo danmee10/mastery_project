@@ -56,7 +56,8 @@ $(document).ready(function() {
     });
   }
 
-// call options popover on a word, anchored to that word's row
+// call popover on a word (options popover unless lookingForSecond==true),
+// anchored to that word's row
   $('#poem-text').on('click', "span.word", function(evt){
     var wordSpelling = $(this).text();
     var wordPosition = this.id;
@@ -64,39 +65,45 @@ $(document).ready(function() {
     var line = $(this).parent();
     evt.stopPropagation();
 
-    definePopover("options");
+    // sets action of clicking on a word depending on whether or not a user is looking for a
+    // second word or their first
+    if (lookingForSecond){
+      alert("OHHHHH!!!, no you didn'!!!")
+    } else {
+      definePopover("options");
 
-    $("span.selected-word").removeClass("selected-word");
-    wordElement.addClass('selected-word');
-    $( "td.line" ).not(line).popover('hide');
-    line.popover('show');
-
-    // close popovers and remove selected-word class on click 'X'
-    $("span#close-popover").on('click', function(){
-      $('td.line').popover('destroy');
       $("span.selected-word").removeClass("selected-word");
-    });
+      wordElement.addClass('selected-word');
+      $( "td.line" ).not(line).popover('hide');
+      line.popover('show');
 
-    // open replacement form, on button click
-    $("div.popover #replace-with").on("click",function() {
-      line.popover('destroy');
-      replacementForm(wordSpelling,wordPosition,wordElement);
-    });
-    // open synonym list for current-word, on button click
-    $("div.popover #synonyms").on("click",function() {
-      line.popover('destroy');
-      synonymList(wordSpelling,wordPosition,wordElement);
-    });
-    // open synonym list for current-word, on button click
-    $("div.popover #rhymes").on("click",function() {
-      line.popover('destroy');
-      rhymeList(wordSpelling,wordPosition,wordElement);
-    });
-    // open synonym list for current-word, on button click
-    $("div.popover #rhyme-with").on("click",function() {
-      line.popover('destroy');
-      rhymeWith(wordSpelling,wordPosition,wordElement);
-    });
+      // close popovers and remove selected-word class on click 'X'
+      $("span#close-popover").on('click', function(){
+        $('td.line').popover('destroy');
+        $("span.selected-word").removeClass("selected-word");
+      });
+
+      // open replacement form, on button click
+      $("div.popover #replace-with").on("click",function() {
+        line.popover('destroy');
+        replacementForm(wordSpelling,wordPosition,wordElement);
+      });
+      // open synonym list for current-word, on button click
+      $("div.popover #synonyms").on("click",function() {
+        line.popover('destroy');
+        synonymList(wordSpelling,wordPosition,wordElement);
+      });
+      // open synonym list for current-word, on button click
+      $("div.popover #rhymes").on("click",function() {
+        line.popover('destroy');
+        rhymeList(wordSpelling,wordPosition,wordElement);
+      });
+      // open synonym list for current-word, on button click
+      $("div.popover #rhyme-with").on("click",function() {
+        line.popover('destroy');
+        rhymeWith(wordSpelling,wordPosition,wordElement);
+      });
+    }
   });
 
   replacementForm = function(wordSpelling, wordPosition, wordElement){
@@ -234,12 +241,7 @@ $(document).ready(function() {
       lookingForSecond = false;
       wordElement.parent().popover('destroy');
     });
-    // redefine click-function for words in poem text so that it does not close existing
-    // popovers and reveal the main button list
-    $('#poem-text').on('click', "span.word", function(evt){
-      $(this).removeClass('selected-word');
-      $(this).addClass('second-word');
-    });
+
 
     //once the user has selected another word, bring up a list of the synonyms of both words that
     //rhyme with each other
