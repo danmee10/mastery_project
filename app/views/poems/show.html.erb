@@ -1,0 +1,21 @@
+<div class="span5 offset1" id="original-text">
+  <h3 class="text-center">Original Text</h3>
+  <hr/>
+  <%= @poem.original_text %>
+</div>
+<div class='span5 offset1 text-center' id='poem-text'>
+  <h3><%=@poem.title.titleize%></h3>
+  <% @poem.default_verse_form.each do |stanza| %>
+    <table style="width:100%" class="text-center">
+      <% stanza.each do |line| %>
+        <tr>
+          <td>
+              <%= line %>
+          </td>
+        </tr>
+      <% end %>
+      <hr/>
+    </table>
+  <% end %>
+  <hr/>
+</div>

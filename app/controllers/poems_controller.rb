@@ -1,5 +1,6 @@
 class PoemsController < ApplicationController
-  before_filter :poem_protection, :only => [:edit, :update]
+  before_filter :edit_poem_protection, :only => [:edit, :update]
+  before_filter :show_poem_protection, :only => [:show]
 
   def new
     @poem = Poem.new
@@ -37,5 +38,13 @@ class PoemsController < ApplicationController
       format.html { redirect_to edit_poem_path(@poem) }
       format.js
     end
+  end
+
+  def index
+    @poems = Poem.where(public_poem: true)
+  end
+
+  def show
+    @poem = Poem.find(params[:id])
   end
 end

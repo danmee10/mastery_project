@@ -11,9 +11,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def poem_protection
+  def edit_poem_protection
     current_poem = Poem.find(params[:id])
     if current_poem.user_id
+      if current_user
+        require_ownership(current_poem)
+      else
+        require_login
+      end
+    end
+  end
+
+  def show_poem_protection
+    current_poem = Poem.find(params[:id])
+    unless current_poem.public_poem
       if current_user
         require_ownership(current_poem)
       else
