@@ -23,7 +23,21 @@
 /* ------------------edit poems--------------------*/
 span.selected-word {
   font-weight: bold;
+  background-color: #2f96b4;
+  color: white;
+  border-radius: 2px;
+  padding: 2px;
+}
+span.hover-select {
+  font-weight: bold;
   background-color: #5bc0de;
+  color: white;
+  border-radius: 2px;
+  padding: 2px;
+}
+span.second-word {
+  font-weight: bold;
+  background-color: #5bb75b;
   color: white;
   border-radius: 2px;
   padding: 2px;
@@ -41,13 +55,13 @@ span.selected-word {
 li.replacement-word:hover{
   font-weight: bold;
 }
-span.word:hover{
+/*span.word:hover{
   font-weight: bold;
   background-color: #5bc0de;
   color: white;
   border-radius: 2px;
   padding: 2px;
-}
+}*/
 /* ------------------masonry--------------------*/
 
 .poem-title-link {

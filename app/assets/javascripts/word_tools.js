@@ -2,6 +2,15 @@ $(document).ready(function() {
 
 // current poem's id
   var poemId = parseFloat($(".poem-id").attr("id"));
+// set selected word class on hover
+  var lookingForSecond = false
+  $('span.word').hover(function(){
+    if (lookingForSecond) {
+      $(this).toggleClass("second-word");
+    } else {
+      $(this).toggleClass("hover-select");
+    }
+  });
 
 // selected word's spelling, and X for closing the popover
   $("#popover-title").hide();
@@ -18,7 +27,7 @@ $(document).ready(function() {
   $("#replacement-form").hide();
 // scafolding for synonyms list
   $("#synonym-box").hide();
-  // scafolding for rhyme list
+// scafolding for rhyme list
   $("#rhyme-box").hide();
 
 // returns appropriate popover content
@@ -29,8 +38,10 @@ $(document).ready(function() {
       return $('#replacement-form').html();
     } else if(content == "synonyms"){
       return $('#synonym-box').html();
-    } else {
+    } else if(content == "rhymes"){
       return $('#rhyme-box').html();
+    } else {
+      return "Please select a second word"
     }
   }
 
@@ -77,9 +88,14 @@ $(document).ready(function() {
       synonymList(wordSpelling,wordPosition,wordElement);
     });
     // open synonym list for current-word, on button click
-    $("div.popover #rhyme-with").on("click",function() {
+    $("div.popover #rhymes").on("click",function() {
       line.popover('destroy');
       rhymeList(wordSpelling,wordPosition,wordElement);
+    });
+    // open synonym list for current-word, on button click
+    $("div.popover #rhyme-with").on("click",function() {
+      line.popover('destroy');
+      rhymeWith(wordSpelling,wordPosition,wordElement);
     });
   });
 
@@ -203,6 +219,33 @@ $(document).ready(function() {
     });
     return false
   }
+
+  // magic*****
+  rhymeWith = function(wordSpelling, wordPosition, wordElement) {
+    definePopover("select-another-word");
+    wordElement.parent().popover('show');
+    // changes hover class for span-words
+    lookingForSecond = true;
+
+    // assigns 'close popovers' and 'remove selected-word class' to click 'X'
+    // and re-set span.word:hover class
+    $("span#close-popover").on('click', function(){
+      $("span.selected-word").removeClass("selected-word");
+      lookingForSecond = false;
+      wordElement.parent().popover('destroy');
+    });
+    // redefine click-function for words in poem text so that it does not close existing
+    // popovers and reveal the main button list
+    $('#poem-text').on('click', "span.word", function(evt){
+      $(this).removeClass('selected-word');
+      $(this).addClass('second-word');
+    });
+
+    //once the user has selected another word, bring up a list of the synonyms of both words that
+    //rhyme with each other
+  }
+
+
+
 });
-// WTF ::
-  // function whatever() {} -|vs|- whatever = function() {} -|vs|- var whatever = function() {}
+
