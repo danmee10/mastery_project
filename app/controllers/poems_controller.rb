@@ -41,8 +41,12 @@ class PoemsController < ApplicationController
   end
 
   def index
-    fail
-    @poems = Poem.where(public_poem: true)
+    if params[:search]
+      @poems = Poem.where(public_poem: true).where("title like ?", "%#{params[:search]}%")
+      @search = params[:search]
+    else
+      @poems = Poem.where(public_poem: true)
+    end
   end
 
   def show

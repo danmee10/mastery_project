@@ -11,7 +11,7 @@ MasteryProject::Application.routes.draw do
   resources :sessions
 
   namespace :api do
-    resources :poems, only: [:update], defaults: { format: "JSON" }
+    resources :poems, only: [:update, :index], defaults: { format: "JSON" }
     resources :words, only: [:show], defaults: { format: "JSON" }
   end
 end

@@ -32,13 +32,13 @@ describe "A user" do
     it "can search poems by name" do
       poem
       visit "/poems"
-      fill_in "Browse Public", with: "icecream"
-      click_on "Browse"
-      expect(current_path).to eq poems_index_path
+      fill_in "search", with: "icecream"
+      click_on "Search"
+      expect(current_path).to eq poems_path
       expect(page).to have_content "Sorry, no poems about icecream were found, please try again"
-      fill_in "Browse Public", with: "testing"
-      click_on "Browse"
-      expect(page).to have_content "1 Poem found"
+      fill_in "search", with: "test"
+      click_on "Search"
+      expect(page).to have_content "Search for test: 1 found"
       expect(page).to have_content "test poem"
     end
   end

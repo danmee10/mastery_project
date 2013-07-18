@@ -73,3 +73,18 @@ span.word:hover{
   border-color: hsla(0, 0%, 0%, 0.5);
   border-radius: 5px;
 }
+/* ------------------search--------------------*/
+
+span#search-results {
+  text-decoration: underline;
+  font-weight: bold;
+}
+#search-for-poems{
+  border: 1px solid grey;
+  position: fixed;
+  background-color: #fafafa;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+
