@@ -12,14 +12,6 @@
  *= require_tree .
  */
 
-/*span:hover {
-  font-weight: bold;
-  background-color: #5bc0de;
-  color: white;
-  border-radius: 2px;
-  padding: 2px;
-}*/
-
 /* ------------------edit poems--------------------*/
 span.selected-word {
   font-weight: bold;
@@ -79,7 +71,17 @@ span#search-results {
   text-decoration: underline;
   font-weight: bold;
 }
+
 #search-for-poems{
+  border: 1px solid grey;
+  position: fixed;
+  background-color: #fafafa;
+  border-radius: 5px;
+  padding: 10px;
+}
+/* ------------------user home--------------------*/
+
+#home-side-menu{
   border: 1px solid grey;
   position: fixed;
   background-color: #fafafa;
