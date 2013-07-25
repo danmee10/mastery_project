@@ -6,6 +6,9 @@ gem 'figaro'
 gem 'simple_form'
 gem "odyssey", "~> 0.1.8"
 gem "sorcery"
+gem 'newrelic_rpm'
+gem 'faker'
+gem 'will_paginate', '~> 3.0.0'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -18,6 +21,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'simplecov', :require => false
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'capybara'

@@ -9,7 +9,7 @@ describe "A user on the home page" do
   end
 
   context "that isn't logged in" do
-    it "can enter text" do
+    it "can enter text", js: true do
       visit '/'
       fill_in :poem_original_text, with: "There are no words in here."
       expect(page).to have_button "Begin!"

@@ -38,4 +38,15 @@ describe UsersController do
       expect(assigns[:user].email).to eq "email@email.com"
     end
   end
+
+  describe "GET #edit" do
+    it 'finds the correct user' do
+      @user = User.create(email: "email@email.com", password: "password")
+      controller.stub(:require_login).and_return(nil)
+      controller.stub(:authenticate).and_return(nil)
+      get :edit, :id => @user.id
+      expect(assigns[:user].class).to eq User
+      expect(assigns[:user].email).to eq "email@email.com"
+    end
+  end
 end

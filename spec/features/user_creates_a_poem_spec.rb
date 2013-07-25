@@ -20,7 +20,7 @@ describe "A user on the edit page" do
         click_on "Begin!"
       end
 
-      it "can view the original text" do
+      it "can view the original text", js: true do
         expect(current_path).to eq edit_poem_path(1)
         expect(page).to have_content "Words for the editing"
       end
@@ -35,7 +35,7 @@ describe "A user on the edit page" do
         expect(Poem.all.first.poem_text).to eq "Statements for the editing"
       end
 
-      it "can log in and be redirected back to the edit screen with the poem saved to their account" do
+      it "can log in and be redirected back to the edit screen with the poem saved to their account", js: true do
         expect(current_path).to eq edit_poem_path(1)
         login(user.email, "password")
         expect(current_path).to eq edit_poem_path(1)
@@ -43,7 +43,7 @@ describe "A user on the edit page" do
         expect(user.poems.first.poem_text).to eq "Words for the editing"
       end
 
-      it "can create an account and be redirected back to the edit screen with the poem saved to their account" do
+      it "can create an account and be redirected back to the edit screen with the poem saved to their account", js: true do
         expect(current_path).to eq edit_poem_path(1)
         click_on "Sign up"
         fill_in "user_email", with: "email@email.com"
@@ -58,7 +58,7 @@ describe "A user on the edit page" do
   end
 
   context "who is logged into their account" do
-    it "can edit the original text and save the poem for later" do
+    it "can edit the original text and save the poem for later", js: true do
       login(user.email, "password")
       visit "/"
       fill_in :poem_original_text, with: "Words for the editing"
@@ -67,7 +67,7 @@ describe "A user on the edit page" do
       expect(user.poems.first.poem_text).to eq "Words for the editing"
     end
 
-    it "can not edit any poems that do not belong to them" do
+    it "can not edit any poems that do not belong to them", js: true do
       user1 = User.create(email: "emai@email.com", password: "password")
       poem = Poem.create(original_text: "These are the words of the poem", poem_text: "These are more words")
       poem.user_id = 1

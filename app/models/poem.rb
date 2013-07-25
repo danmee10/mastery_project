@@ -4,6 +4,8 @@ class Poem < ActiveRecord::Base
   belongs_to :user
 
   validates :original_text, presence: true
+  validates :max_lines, :numericality => {:greater_than => 0, :message => "You must at least one line in a stanza" }
+  validates :max_syllables, :numericality => {:greater_than => 0, :message => "You must at least one syllable in a line" }
 
   def default_verse_form
     dirty_words_array = poem_text.split(" ")

@@ -32,13 +32,17 @@ class PoemsController < ApplicationController
 
   def update
     @poem = Poem.find(params[:id])
-    @poem.update_attributes(params[:poem])
-    @poem.save!
+    @poem.assign_attributes(params[:poem])
 
-    respond_to do |format|
-      format.html { redirect_to edit_poem_path(@poem) }
-      format.js
+    if @poem.save
+      redirect_to edit_poem_path(@poem), notice: "Updated!"
+    else
+      redirect_to edit_poem_path(@poem), error: "Invalid Attributes"
     end
+    # respond_to do |format|
+    #   format.html { redirect_to edit_poem_path(@poem) }
+    #   format.js
+    # end
   end
 
   def index
@@ -46,7 +50,7 @@ class PoemsController < ApplicationController
       @poems = Poem.where(public_poem: true).where("title like ?", "%#{params[:search]}%")
       @search = params[:search]
     else
-      @poems = Poem.where(public_poem: true)
+      @poems = Poem.where(public_poem: true).paginate(:page => params[:page], :per_page => 30)
     end
   end
 

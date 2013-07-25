@@ -9,22 +9,23 @@ class Api::PoemsController < ApplicationController
       format.json { render json: @payload }
     end
   end
-
-  def index
-    @poems = Poem.where(public_poem: true).where("title like ?", "%#{params[:search]}%")
-    @search = params[:search]
-    @payload = {}
-    @payload[:poems] = []
-    @poems.each do |poem|
-
-      @payload[:poems] << {   id: poem.id,
-                             pic: poem.pic,
-                           title: poem.title   }
-    end
-    @payload[:search] = @search
-
-    respond_to do |format|
-      format.json { render json: @payload }
-    end
-  end
 end
+
+# makes new request for poems matching each search instead of just 'hiding' those that don't
+  # def index
+  #   @poems = Poem.where(public_poem: true).where("title like ?", "%#{params[:search]}%")
+  #   @search = params[:search]
+  #   @payload = {}
+  #   @payload[:poems] = []
+  #   @poems.each do |poem|
+
+  #     @payload[:poems] << {   id: poem.id,
+  #                            pic: poem.pic,
+  #                          title: poem.title   }
+  #   end
+  #   @payload[:search] = @search
+
+  #   respond_to do |format|
+  #     format.json { render json: @payload }
+  #   end
+  # end
