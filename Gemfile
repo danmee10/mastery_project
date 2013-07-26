@@ -9,6 +9,7 @@ gem "sorcery"
 gem 'newrelic_rpm'
 gem 'faker'
 gem 'will_paginate', '~> 3.0.0'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

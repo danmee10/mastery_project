@@ -11,7 +11,6 @@ class Api::PoemsController < ApplicationController
   end
 end
 
-# makes new request for poems matching each search instead of just 'hiding' those that don't
   # def index
   #   @poems = Poem.where(public_poem: true).where("title like ?", "%#{params[:search]}%")
   #   @search = params[:search]
@@ -29,3 +28,5 @@ end
   #     format.json { render json: @payload }
   #   end
   # end
+
+# makes new request for poems matching each search instead of just 'hiding' those that don't

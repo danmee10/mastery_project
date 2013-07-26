@@ -47,8 +47,9 @@ class PoemsController < ApplicationController
 
   def index
     if params[:search]
-      @poems = Poem.where(public_poem: true).where("title like ?", "%#{params[:search]}%")
+      @poems = Poem.where(public_poem: true).where("title like ?", "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 30)
       @search = params[:search]
+      # fail
     else
       @poems = Poem.where(public_poem: true).paginate(:page => params[:page], :per_page => 30)
     end

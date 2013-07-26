@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "A user" do
   let(:poem) {Poem.create(original_text: "words words words", poem_text: "more words words", title: "test poem")}
+
   context "who is not logged in" do
     it "can visit the poems index page and view all public poems" do
       poem
