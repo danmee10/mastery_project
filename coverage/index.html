@@ -14,26 +14,26 @@
       <img src="./assets/0.7.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2013-07-25T19:31:11-06:00">2013-07-25T19:31:11-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2013-08-02T10:33:04-06:00">2013-08-02T10:33:04-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">90.95%</span></span>
+    (<span class="covered_percent"><span class="green">91.03%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         8.26
+         8.92
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>14</b> files in total.
-    <b>232</b> relevant lines. 
-    <span class="green"><b>211</b> lines covered</span> and
+    <b>234</b> relevant lines. 
+    <span class="green"><b>213</b> lines covered</span> and
     <span class="red"><b>21</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -142,12 +142,12 @@
       
       <tr>
         <td class="strong"><a href="#c3d51bafa21778c74ac1bfe740b4eba1003bd58e" class="src_link" title="app/models/poem.rb">app/models/poem.rb</a></td>
-        <td class="green strong">97.14 %</td>
-        <td>58</td>
-        <td>35</td>
-        <td>34</td>
+        <td class="green strong">97.3 %</td>
+        <td>104</td>
+        <td>37</td>
+        <td>36</td>
         <td>1</td>
-        <td>41.6</td>
+        <td>50.8</td>
       </tr>
       
       <tr>
@@ -296,19 +296,19 @@
           <div class="file_list_container" id="Models">
   <h2>
     <span class="group_name">Models</span>
-    (<span class="covered_percent"><span class="green">94.69%</span></span>
+    (<span class="covered_percent"><span class="green">94.78%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         18.94
+         20.78
        </span>
     </span> hits/line)
   </h2>
   <a name="Models"></a>
   <div>
     <b>5</b> files in total.
-    <b>113</b> relevant lines. 
-    <span class="green"><b>107</b> lines covered</span> and
+    <b>115</b> relevant lines. 
+    <span class="green"><b>109</b> lines covered</span> and
     <span class="red"><b>6</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -327,12 +327,12 @@
       
       <tr>
         <td class="strong"><a href="#c3d51bafa21778c74ac1bfe740b4eba1003bd58e" class="src_link" title="app/models/poem.rb">app/models/poem.rb</a></td>
-        <td class="green strong">97.14 %</td>
-        <td>58</td>
-        <td>35</td>
-        <td>34</td>
+        <td class="green strong">97.3 %</td>
+        <td>104</td>
+        <td>37</td>
+        <td>36</td>
         <td>1</td>
-        <td>41.6</td>
+        <td>50.8</td>
       </tr>
       
       <tr>
@@ -2149,10 +2149,10 @@
         <div class="source_table" id="c3d51bafa21778c74ac1bfe740b4eba1003bd58e">
   <div class="header">
     <h3>app/models/poem.rb</h3>
-    <h4><span class="green">97.14 %</span> covered</h4>
+    <h4><span class="green">97.3 %</span> covered</h4>
     <div>
-      <b>35</b> relevant lines. 
-      <span class="green"><b>34</b> lines covered</span> and
+      <b>37</b> relevant lines. 
+      <span class="green"><b>36</b> lines covered</span> and
       <span class="red"><b>1</b> lines missed.</span>
     </div>
   </div>
@@ -2199,145 +2199,145 @@
         <li class="covered" data-hits="1" data-linenumber="7">
           <span class="hits">1</span>
           
-          <code class="ruby">  validates :max_lines, :numericality =&gt; {:greater_than =&gt; 0, :message =&gt; &quot;You must at least one line in a stanza&quot; }</code>
+          <code class="ruby">  validates :max_lines, :numericality =&gt;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="8">
+        <li class="never" data-hits="" data-linenumber="8">
+          
+          
+          <code class="ruby">                            {:greater_than =&gt; 0, :message =&gt; &quot;You must have at least one line in a stanza&quot; }</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="9">
           <span class="hits">1</span>
           
-          <code class="ruby">  validates :max_syllables, :numericality =&gt; {:greater_than =&gt; 0, :message =&gt; &quot;You must at least one syllable in a line&quot; }</code>
+          <code class="ruby">  validates :max_syllables, :numericality =&gt;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="9">
+        <li class="never" data-hits="" data-linenumber="10">
+          
+          
+          <code class="ruby">                                {:greater_than =&gt; 0, :message =&gt; &quot;You must have at least one syllable in a line&quot; }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="10">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def default_verse_form</code>
-        </li>
-      
-        <li class="covered" data-hits="19" data-linenumber="11">
-          <span class="hits">19</span>
-          
-          <code class="ruby">    dirty_words_array = poem_text.split(&quot; &quot;)</code>
-        </li>
-      
-        <li class="covered" data-hits="19" data-linenumber="12">
-          <span class="hits">19</span>
-          
-          <code class="ruby">    lines_array(dirty_words_array).each_slice(max_lines).to_a</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="13">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="14">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="15">
+        <li class="covered" data-hits="1" data-linenumber="12">
           <span class="hits">1</span>
           
           <code class="ruby">  def replace(index, word)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="16">
+        <li class="covered" data-hits="1" data-linenumber="13">
           <span class="hits">1</span>
           
           <code class="ruby">    edit = poem_text.split(&quot; &quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="17">
+        <li class="covered" data-hits="1" data-linenumber="14">
           <span class="hits">1</span>
           
           <code class="ruby">    punctuation = edit[index].scan(/\W+\z/).pop</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="18">
+        <li class="covered" data-hits="1" data-linenumber="15">
           <span class="hits">1</span>
           
           <code class="ruby">    if punctuation == nil</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="19">
+        <li class="missed" data-hits="0" data-linenumber="16">
           
           
           <code class="ruby">      edit[index] = word</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="20">
+        <li class="never" data-hits="" data-linenumber="17">
           
           
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="21">
+        <li class="covered" data-hits="1" data-linenumber="18">
           <span class="hits">1</span>
           
           <code class="ruby">      edit[index] = word + punctuation</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="22">
+        <li class="never" data-hits="" data-linenumber="19">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="23">
+        <li class="covered" data-hits="1" data-linenumber="20">
           <span class="hits">1</span>
           
           <code class="ruby">    update_attributes(poem_text: edit.join(&quot; &quot;))</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="24">
+        <li class="never" data-hits="" data-linenumber="21">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="25">
+        <li class="never" data-hits="" data-linenumber="22">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="26">
+        <li class="covered" data-hits="1" data-linenumber="23">
           <span class="hits">1</span>
           
-          <code class="ruby">private</code>
+          <code class="ruby">  def verse_form</code>
+        </li>
+      
+        <li class="covered" data-hits="19" data-linenumber="24">
+          <span class="hits">19</span>
+          
+          <code class="ruby">    syllable_lines.each_slice(max_lines).to_a</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="25">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="26">
+          
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="27">
           <span class="hits">1</span>
           
-          <code class="ruby">  def lines_array(dirty_words_array)</code>
+          <code class="ruby">private</code>
         </li>
       
-        <li class="covered" data-hits="19" data-linenumber="28">
-          <span class="hits">19</span>
+        <li class="covered" data-hits="1" data-linenumber="28">
+          <span class="hits">1</span>
           
-          <code class="ruby">    current_line = []</code>
+          <code class="ruby">  def words_with_punctuation</code>
         </li>
       
-        <li class="covered" data-hits="19" data-linenumber="29">
-          <span class="hits">19</span>
+        <li class="covered" data-hits="229" data-linenumber="29">
+          <span class="hits">229</span>
           
-          <code class="ruby">    all_lines = []</code>
+          <code class="ruby">    poem_text.split(&quot; &quot;)</code>
         </li>
       
-        <li class="covered" data-hits="19" data-linenumber="30">
-          <span class="hits">19</span>
+        <li class="never" data-hits="" data-linenumber="30">
           
-          <code class="ruby">    line_syllables = 0</code>
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="31">
@@ -2346,46 +2346,46 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="19" data-linenumber="32">
-          <span class="hits">19</span>
+        <li class="covered" data-hits="1" data-linenumber="32">
+          <span class="hits">1</span>
           
-          <code class="ruby">    dirty_words_array.each do |word|</code>
+          <code class="ruby">  def syllable_lines</code>
         </li>
       
-        <li class="covered" data-hits="210" data-linenumber="33">
-          <span class="hits">210</span>
+        <li class="never" data-hits="" data-linenumber="33">
           
-          <code class="ruby">      clean_word = Word.clean(word)</code>
+          
+          <code class="ruby">    # transform words_with_punctuation into an array of lines with a certain number of syllables</code>
         </li>
       
-        <li class="covered" data-hits="210" data-linenumber="34">
-          <span class="hits">210</span>
-          
-          <code class="ruby">      word_sylls = Word.syllables(clean_word)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="35">
+        <li class="never" data-hits="" data-linenumber="34">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="210" data-linenumber="36">
-          <span class="hits">210</span>
+        <li class="never" data-hits="" data-linenumber="35">
           
-          <code class="ruby">      if (line_syllables + word_sylls) &lt;= max_syllables</code>
+          
+          <code class="ruby">    # iterate over the array, and join words together until</code>
         </li>
       
-        <li class="covered" data-hits="182" data-linenumber="37">
-          <span class="hits">182</span>
+        <li class="covered" data-hits="19" data-linenumber="36">
+          <span class="hits">19</span>
           
-          <code class="ruby">        line_syllables += word_sylls</code>
+          <code class="ruby">    current_line = []</code>
         </li>
       
-        <li class="covered" data-hits="182" data-linenumber="38">
-          <span class="hits">182</span>
+        <li class="covered" data-hits="19" data-linenumber="37">
+          <span class="hits">19</span>
           
-          <code class="ruby">        current_line &lt;&lt; word</code>
+          <code class="ruby">    all_lines = []</code>
+        </li>
+      
+        <li class="covered" data-hits="19" data-linenumber="38">
+          <span class="hits">19</span>
+          
+          <code class="ruby">    line_syllables = 0</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="39">
@@ -2394,22 +2394,22 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="182" data-linenumber="40">
-          <span class="hits">182</span>
+        <li class="covered" data-hits="19" data-linenumber="40">
+          <span class="hits">19</span>
           
-          <code class="ruby">        if word == dirty_words_array.last</code>
+          <code class="ruby">    words_with_punctuation.each do |word|</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="41">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="210" data-linenumber="41">
+          <span class="hits">210</span>
           
-          <code class="ruby">          all_lines &lt;&lt; current_line.join(&quot; &quot;)</code>
+          <code class="ruby">      clean_word = Word.clean(word)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="42">
+        <li class="covered" data-hits="210" data-linenumber="42">
+          <span class="hits">210</span>
           
-          
-          <code class="ruby">        end</code>
+          <code class="ruby">      word_sylls = Word.syllables(clean_word)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="43">
@@ -2418,94 +2418,370 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="44">
+        <li class="covered" data-hits="210" data-linenumber="44">
+          <span class="hits">210</span>
           
-          
-          <code class="ruby">      else</code>
+          <code class="ruby">      if (line_syllables + word_sylls) &lt;= max_syllables</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="45">
-          <span class="hits">28</span>
+        <li class="covered" data-hits="182" data-linenumber="45">
+          <span class="hits">182</span>
           
-          <code class="ruby">        all_lines &lt;&lt; current_line.join(&quot; &quot;)</code>
+          <code class="ruby">        line_syllables += word_sylls</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="46">
-          <span class="hits">28</span>
+        <li class="covered" data-hits="182" data-linenumber="46">
+          <span class="hits">182</span>
           
-          <code class="ruby">        current_line = [word]</code>
+          <code class="ruby">        current_line &lt;&lt; word</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="47">
-          <span class="hits">28</span>
+        <li class="never" data-hits="" data-linenumber="47">
           
-          <code class="ruby">        line_syllables = word_sylls</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="48">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">        is_last_word({word: word,</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="49">
-          <span class="hits">28</span>
+        <li class="never" data-hits="" data-linenumber="49">
           
-          <code class="ruby">        if word == dirty_words_array.last</code>
+          
+          <code class="ruby">                      line: current_line,</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="50">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="182" data-linenumber="50">
+          <span class="hits">182</span>
           
-          <code class="ruby">          all_lines &lt;&lt; current_line.join(&quot; &quot;)</code>
+          <code class="ruby">                     lines: all_lines})</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="51">
           
           
-          <code class="ruby">        end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="52">
           
           
+          <code class="ruby">      else</code>
+        </li>
+      
+        <li class="covered" data-hits="28" data-linenumber="53">
+          <span class="hits">28</span>
+          
+          <code class="ruby">        all_lines &lt;&lt; current_line.join(&quot; &quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="28" data-linenumber="54">
+          <span class="hits">28</span>
+          
+          <code class="ruby">        current_line = [word]</code>
+        </li>
+      
+        <li class="covered" data-hits="28" data-linenumber="55">
+          <span class="hits">28</span>
+          
+          <code class="ruby">        line_syllables = word_sylls</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="56">
+          
+          
           <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="53">
-          
-          
-          <code class="ruby">      end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="54">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="55">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="19" data-linenumber="56">
-          <span class="hits">19</span>
-          
-          <code class="ruby">    return all_lines</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="57">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">        is_last_word({word: word,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="58">
           
           
+          <code class="ruby">                      line: current_line,</code>
+        </li>
+      
+        <li class="covered" data-hits="28" data-linenumber="59">
+          <span class="hits">28</span>
+          
+          <code class="ruby">                     lines: all_lines})</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="60">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="61">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="62">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="63">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="19" data-linenumber="64">
+          <span class="hits">19</span>
+          
+          <code class="ruby">    return all_lines</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="65">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="66">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="67">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def is_last_word(args)</code>
+        </li>
+      
+        <li class="covered" data-hits="210" data-linenumber="68">
+          <span class="hits">210</span>
+          
+          <code class="ruby">    if args[:word] == words_with_punctuation.last</code>
+        </li>
+      
+        <li class="covered" data-hits="20" data-linenumber="69">
+          <span class="hits">20</span>
+          
+          <code class="ruby">      args[:lines] &lt;&lt; args[:line].join(&quot; &quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="70">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="71">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="72">
+          
+          
           <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="73">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="74">
+          
+          
+          <code class="ruby"># def lines_array(dirty_words_array)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="75">
+          
+          
+          <code class="ruby">#     current_line = []</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="76">
+          
+          
+          <code class="ruby">#     all_lines = []</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="77">
+          
+          
+          <code class="ruby">#     line_syllables = 0</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="78">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="79">
+          
+          
+          <code class="ruby">#     dirty_words_array.each do |word|</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="80">
+          
+          
+          <code class="ruby">#       clean_word = Word.clean(word)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="81">
+          
+          
+          <code class="ruby">#       word_sylls = Word.syllables(clean_word)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="82">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="83">
+          
+          
+          <code class="ruby">#       if (line_syllables + word_sylls) &lt;= max_syllables</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="84">
+          
+          
+          <code class="ruby">#         line_syllables += word_sylls</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="85">
+          
+          
+          <code class="ruby">#         current_line &lt;&lt; word</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="86">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="87">
+          
+          
+          <code class="ruby">#         if word == dirty_words_array.last</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="88">
+          
+          
+          <code class="ruby">#           all_lines &lt;&lt; current_line.join(&quot; &quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="89">
+          
+          
+          <code class="ruby">#         end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="90">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="91">
+          
+          
+          <code class="ruby">#       else</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="92">
+          
+          
+          <code class="ruby">#         all_lines &lt;&lt; current_line.join(&quot; &quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="93">
+          
+          
+          <code class="ruby">#         current_line = [word]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="94">
+          
+          
+          <code class="ruby">#         line_syllables = word_sylls</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="95">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="96">
+          
+          
+          <code class="ruby">#         if word == dirty_words_array.last</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="97">
+          
+          
+          <code class="ruby">#           all_lines &lt;&lt; current_line.join(&quot; &quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="98">
+          
+          
+          <code class="ruby">#         end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="99">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="100">
+          
+          
+          <code class="ruby">#       end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="101">
+          
+          
+          <code class="ruby">#     end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="102">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="103">
+          
+          
+          <code class="ruby">#     return all_lines</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="104">
+          
+          
+          <code class="ruby">#   end</code>
         </li>
       
     </ol>

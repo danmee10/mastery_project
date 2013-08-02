@@ -34,6 +34,7 @@ end
 
 group :development do
   gem "better_errors"
+  gem 'rack-mini-profiler'
 end
 
 group :production do

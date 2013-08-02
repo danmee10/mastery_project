@@ -5,7 +5,7 @@
 </div>
 <div class='span5 offset1 text-center' id='poem-text'>
   <h3><%=@poem.title.titleize%></h3>
-  <% @poem.default_verse_form.each do |stanza| %>
+  <% @poem.verse_form.each do |stanza| %>
     <table style="width:100%" class="text-center">
       <% stanza.each do |line| %>
         <tr>
